@@ -8,4 +8,5 @@ package com.wd.tech.data.constant;
  * @packageName:com.wd.tech.dimensionalitytechnology.data.constant
  */
 public interface ApiService {
+
 }

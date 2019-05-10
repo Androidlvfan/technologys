@@ -22,6 +22,6 @@ public class CommunityFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        //我是小仙吕
     }
 }
