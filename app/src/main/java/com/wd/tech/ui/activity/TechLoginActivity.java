@@ -132,19 +132,13 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
         if(loginBean.getStatus().equals("0000")){
            /* SpUtils.getInstance().saveData("userId", loginBean.getResult().getUserId() + "");
             SpUtils.getInstance().saveData("sessionId", loginBean.getResult().getSessionId() + "");
-            */Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
+            */
+            Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(TechLoginActivity.this,TechHomeActivity.class));
         }else {
             Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-        /*LoginBean bean = loginBean;
-        if(bean.getStatus().equals("0000")){
-
-
-        }else {
-            Toast.makeText(this, ""+bean.getMessage(), Toast.LENGTH_SHORT).show();
-        }*/
     }
 
     /*

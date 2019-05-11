@@ -32,25 +32,14 @@ public class RetrofitUtils {
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(buildOkhttpClinet())
+                .client(okHttpClient)
                 .baseUrl(Constant.BASE_URL)
                 .build();
 
         return builder.build();
     }
 
-    private OkHttpClient buildOkhttpClinet(){
-       // HttpsUtils httpsUtils = new HttpsUtils(App.getAppContext());
-        OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
-                .addInterceptor(new LogInterceptor());
-        //支持https证书和域名认证
-       // OkHttpClient.Builder newBuilder = httpsUtils.setCertificateForOkhttp(builder);
-        return builder.build();
-    }
+
 
     private RetrofitUtils(String baseurl){
         this.retrofit = retrofit(baseurl);

@@ -19,7 +19,7 @@ public class LoginPresenter implements LoginContractClass.LoginPresenter {
     private LoginModel model;
 
     @Override
-    public void attahView(LoginContractClass.LoginView registerView) {
+    public void attahView(LoginContractClass.LoginView loginView) {
         this.loginView = loginView;
         reference = new SoftReference<>(loginView);
         model = new LoginModel();
