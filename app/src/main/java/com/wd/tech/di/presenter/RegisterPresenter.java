@@ -1,5 +1,6 @@
 package com.wd.tech.di.presenter;
 
+import com.wd.tech.data.bean.RegisterBean;
 import com.wd.tech.di.contract.RegisterContract;
 import com.wd.tech.di.model.RegisterModel;
 
@@ -33,11 +34,11 @@ public class RegisterPresenter implements RegisterContract.RegisterPresenter {
     }
 
     @Override
-    public void requestData() {
-        model.containData(new RegisterContract.RegisterModel.CallBack() {
+    public void requestData(String phone,String nickName,String pwd) {
+        model.containData(phone,nickName,pwd,new RegisterContract.RegisterModel.CallBack() {
             @Override
-            public void onCallBack() {
-                registerView.showData();
+            public void onCallBack(RegisterBean registerBean) {
+                registerView.showData(registerBean);
             }
         });
     }

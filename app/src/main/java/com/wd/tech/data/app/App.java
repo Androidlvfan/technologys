@@ -1,12 +1,14 @@
 package com.wd.tech.data.app;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.mob.MobSDK;
 import com.wd.tech.gen.DaoMaster;
 import com.wd.tech.gen.DaoSession;
 
@@ -19,12 +21,14 @@ import com.wd.tech.gen.DaoSession;
  */
 public class App extends Application {
 
-
+    private static App app;
     private static DaoSession daoSession;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        app = this;
+        MobSDK.init(this);
         //缓存路径及大小
         DiskCacheConfig diskCacheConfig = DiskCacheConfig.newBuilder(this)
                 .setBaseDirectoryPath(getCacheDir())
@@ -55,5 +59,9 @@ public class App extends Application {
 
     public static DaoSession getDaoSession() {
         return daoSession;
+    }
+
+    public static Context getAppContext(){
+        return app;
     }
 }

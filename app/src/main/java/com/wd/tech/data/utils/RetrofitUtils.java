@@ -1,5 +1,6 @@
 package com.wd.tech.data.utils;
 
+import com.wd.tech.data.app.App;
 import com.wd.tech.data.constant.Constant;
 
 import java.util.concurrent.TimeUnit;
@@ -22,21 +23,27 @@ public class RetrofitUtils {
     private Retrofit retrofit;
 
     private Retrofit retrofit(String baseurl){
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .writeTimeout(20, TimeUnit.SECONDS)
-                .readTimeout(20, TimeUnit.SECONDS)
-                .connectTimeout(20, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
-                .addInterceptor(new LogInterceptor())
-                .build();
 
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(okHttpClient)
+                .client(buildOkhttpClinet())
                 .baseUrl(Constant.BASE_URL)
                 .build();
 
+        return builder.build();
+    }
+
+    private OkHttpClient buildOkhttpClinet(){
+       // HttpsUtils httpsUtils = new HttpsUtils(App.getAppContext());
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                .writeTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20, TimeUnit.SECONDS)
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .retryOnConnectionFailure(true)
+                .addInterceptor(new LogInterceptor());
+        //支持https证书和域名认证
+       // OkHttpClient.Builder newBuilder = httpsUtils.setCertificateForOkhttp(builder);
         return builder.build();
     }
 
