@@ -1,5 +1,7 @@
 package com.wd.tech.di.contract;
 
+import com.wd.tech.data.bean.RegisterBean;
+
 /**
  * @author Wyg
  * @description DOTO
@@ -10,7 +12,7 @@ package com.wd.tech.di.contract;
 public interface RegisterContract {
 
     public interface RegisterView{
-        public void showData();
+        public void showData(RegisterBean registerBean);
     }
 
     public interface RegisterPresenter<RegisterView>{
@@ -18,14 +20,14 @@ public interface RegisterContract {
 
         public void deachView(RegisterContract.RegisterView registerView);
 
-        public void requestData();
+        public void requestData(String phone,String nickName,String pwd);
     }
 
     public interface RegisterModel{
-        public void containData(CallBack callBack);
+        public void containData(String phone,String nickName,String pwd,CallBack callBack);
 
         public interface CallBack{
-            public void onCallBack();
+            public void onCallBack(RegisterBean registerBean);
         }
     }
 }
