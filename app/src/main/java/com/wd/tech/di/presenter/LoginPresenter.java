@@ -1,41 +1,49 @@
 package com.wd.tech.di.presenter;
 
-import android.util.Log;
-
 import com.wd.tech.data.bean.LoginBean;
-import com.wd.tech.di.contant.LoginContracClass;
+import com.wd.tech.di.contract.LoginContractClass;
 import com.wd.tech.di.model.LoginModel;
 
 import java.lang.ref.SoftReference;
+/**
+ * @author Wyg
+ * @description DOTO
+ * @date :2019/5/10 20:29
+ * @fileName:RegisterPresenter
+ * @packageName:com.wd.tech.di.presenter
+ */
+public class LoginPresenter implements LoginContractClass.LoginPresenter {
 
-public class LoginPresenter implements LoginContracClass.Loginresenter {
-
-    private LoginContracClass.LoginView loginView;
-    private SoftReference<LoginContracClass.LoginView> reference;
+    private LoginContractClass.LoginView loginView;
+    private SoftReference<LoginContractClass.LoginView> reference;
     private LoginModel model;
 
     @Override
-    public void attahView(LoginContracClass.LoginView loginView) {
+    public void attahView(LoginContractClass.LoginView registerView) {
         this.loginView = loginView;
         reference = new SoftReference<>(loginView);
         model = new LoginModel();
     }
 
     @Override
-    public void deachView(LoginContracClass.LoginView loginView) {
+    public void deachView(LoginContractClass.LoginView loginView) {
         reference.clear();
     }
 
     @Override
     public void requestData(String phone,String pwd) {
-        model.containData(phone,pwd,new LoginContracClass.LoginModel.CallBack() {
+        model.containData(phone, pwd, new LoginContractClass.LoginModel.CallBack() {
             @Override
             public void onCallBack(LoginBean loginBean) {
                 loginView.showData(loginBean);
-                Log.e("tag",""+loginBean.getMessage());
             }
         });
-    }
+
+
+
+
+
+
+};
+
 }
-
-

@@ -1,5 +1,12 @@
 package com.wd.tech.data.constant;
 
+import com.wd.tech.data.bean.RegisterBean;
+
+import io.reactivex.Observable;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+
 import com.wd.tech.data.bean.LoginBean;
 
 import io.reactivex.Observable;
@@ -20,8 +27,9 @@ public interface ApiService {
     @POST("techApi/user/v1/login")
     Observable<LoginBean> getLogin(@Field("phone") String phone, @Field("pwd") String pwd);
 
+
     @FormUrlEncoded
-    @POST("echApi/user/v1/weChatLogin")
-    Observable<LoginBean> getWX(@Field("phone") String phone, @Field("pwd") String pwd);
+    @POST("techApi/user/v1/register")
+    Observable<RegisterBean> getRegisterData(@Field("phone")String phone,@Field("nickName")String nickName,@Field("pwd")String pwd);
 
 }

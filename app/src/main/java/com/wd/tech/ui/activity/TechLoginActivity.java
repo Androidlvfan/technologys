@@ -17,13 +17,13 @@ import android.widget.Toast;
 import com.wd.tech.R;
 import com.wd.tech.data.bean.LoginBean;
 import com.wd.tech.data.utils.RsaCoder;
-import com.wd.tech.di.contant.LoginContracClass;
+import com.wd.tech.di.contract.LoginContractClass;
 import com.wd.tech.di.presenter.LoginPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TechLoginActivity extends BaseActivity implements LoginContracClass.LoginView,View.OnClickListener {
+public class TechLoginActivity extends BaseActivity implements LoginContractClass.LoginView,View.OnClickListener {
 
 
     @BindView(R.id.et_login_name)

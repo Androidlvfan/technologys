@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.TechStartActivity">
+        <activity android:name=".ui.activity.TechStartActivity"/>
+        <activity android:name=".ui.activity.TechHomeActivity"/>
+        <activity android:name=".ui.activity.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +24,13 @@
         </activity>
 
         <!-- AutoSize 今日头条适配 -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+
+        <!-- AutoSize 今日头条适配-->
         <meta-data
             android:name="design_width_in_dp"
             android:value="360" />
@@ -29,7 +38,6 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".ui.activity.TechHomeActivity" />
         <activity android:name=".ui.activity.TechLoginActivity" />
     </application>
 
