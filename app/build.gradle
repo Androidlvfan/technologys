@@ -82,4 +82,9 @@ dependencies {
     implementation files('libs/SMSSDK-3.3.1.jar')
     implementation files('libs/MobTools-2019.0505.1729.jar')
     implementation files('libs/MobCommons-2019.0423.2029.jar')
+    //日志拦截器
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.wd.tech.data.utils;
 
 
+
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
@@ -21,6 +22,10 @@ public class RsaCoder {
     public static final String KEY_ALGORITHM = "RSA";
 
     //公钥对象
+    //非对称密钥算法
+
+
+    //公钥
     private static PublicKey publicKey;
 
     //初始化
@@ -32,6 +37,7 @@ public class RsaCoder {
     /**
      * 获取公钥
      *
+     *  获取公钥
      * @param algorithm
      * @return
      */
@@ -42,7 +48,8 @@ public class RsaCoder {
             KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
             X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(decoded);
             return keyFactory.generatePublic(x509KeySpec);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             return null;
         }
     }
@@ -86,6 +93,7 @@ public class RsaCoder {
     /**
      * 公钥加密
      *
+     *  公钥加密
      * @param data
      * @return
      * @throws Exception

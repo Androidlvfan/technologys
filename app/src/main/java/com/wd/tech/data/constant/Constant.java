@@ -10,4 +10,5 @@ package com.wd.tech.data.constant;
 public class Constant {
 
     public static final String BASE_URL = "https://mobile.bwstudent.com/";
+
 }

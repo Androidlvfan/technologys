@@ -1,11 +1,9 @@
 package com.wd.tech.data.utils;
 
-import com.wd.tech.data.app.App;
 import com.wd.tech.data.constant.Constant;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -46,6 +44,8 @@ public class RetrofitUtils {
        // OkHttpClient.Builder newBuilder = httpsUtils.setCertificateForOkhttp(builder);
         return builder.build();
     }
+
+
 
     private RetrofitUtils(String baseurl){
         this.retrofit = retrofit(baseurl);

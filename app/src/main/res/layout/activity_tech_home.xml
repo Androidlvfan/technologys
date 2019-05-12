@@ -40,7 +40,7 @@
                 android:layout_weight="1"
                 android:button="@null"
                 android:checked="true"
-                android:drawableTop="@drawable/informatiion_select"
+                android:drawableTop="@drawable/informatiionselect"
                 android:gravity="center"
                 android:paddingRight="10dp"
                 android:text="资讯" />
