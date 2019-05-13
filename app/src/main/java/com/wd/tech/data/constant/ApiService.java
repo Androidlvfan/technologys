@@ -31,7 +31,5 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("techApi/user/v1/login")
     Observable<LoginBean> getLogin(@Field("phone") String phone, @Field("pwd") String pwd);
-
-
-
+    
 }

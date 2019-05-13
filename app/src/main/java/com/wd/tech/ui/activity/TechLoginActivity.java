@@ -104,6 +104,8 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
 
                 break;
             case R.id.text_reg:
+                Intent intent = new Intent(this,RegisterActivity.class);
+                startActivity(intent);
                 break;
           /*  case R.id.wxLogin:
                *//* // 微信登录
