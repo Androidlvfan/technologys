@@ -23,7 +23,7 @@
         android:drawableBottom="@drawable/edit_shape"
         android:drawablePadding="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_40"
-        android:hint="@string/phonenum"
+        android:hint="手机号"
         android:maxLines="1"
         android:textColor="#ddd"
         android:padding="20dp"
@@ -40,7 +40,7 @@
         android:layout_marginRight="@dimen/dp_40"
         android:drawableBottom="@drawable/edit_shape"
         android:drawablePadding="@dimen/dp_10"
-        android:hint="@string/password"
+        android:hint="登录密码"
         android:password="true"
         android:maxLines="1"
         android:textColor="#ddd"
@@ -59,7 +59,7 @@
             android:layout_marginRight="35dp"
             android:clickable="true"
             android:padding="20dp"
-            android:text="@string/fast_reg"
+            android:text="快速注册"
             android:textColor="#fff"
             android:textSize="@dimen/sp_14" />
     </RelativeLayout>
@@ -74,7 +74,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="135dp"
         android:background="@drawable/yuanjiao"
-        android:text="@string/login"
+        android:text="登陆"
         android:textColor="#ffffff"
         android:textSize="18dp" />
 
@@ -133,7 +133,6 @@
             android:src="@mipmap/login_icon_artigence_xhdpi"/>
 
     </RelativeLayout>
-
 
 
 </LinearLayout>

@@ -42,6 +42,7 @@ public class TechHomeActivity extends BaseActivity {
     @Override
     protected void initData() {
         ButterKnife.bind(this);
+
         //创建集合 添加fragment
         list = new ArrayList<>();
         list.add(new InformatiionFragment());
@@ -73,12 +74,15 @@ public class TechHomeActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.activityHome_zxBtn:
+
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.activityHome_messageBtn:
+
                 viewPager.setCurrentItem(1);
                 break;
             case R.id.activityHome_groupBtn:
+
                 viewPager.setCurrentItem(2);
                 break;
         }

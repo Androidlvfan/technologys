@@ -15,10 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wd.tech.R;
+import com.wd.tech.data.app.App;
+import com.wd.tech.data.bean.GreenBean;
 import com.wd.tech.data.bean.LoginBean;
 import com.wd.tech.data.utils.RsaCoder;
 import com.wd.tech.di.contract.LoginContractClass;
 import com.wd.tech.di.presenter.LoginPresenter;
+import com.wd.tech.gen.DaoSession;
+import com.wd.tech.gen.GreenBeanDao;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +53,6 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
 
     @Override
     protected void initData() {
-
         ButterKnife.bind(this);
 
         btnLogin.setOnClickListener(this);
@@ -98,12 +103,15 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
                     }
                     loginPresenter.requestData(phone1,publicKey);
                     Log.e("lhp",""+phone1);
+                    Log.d("TechLoginActivity", publicKey);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
                 break;
             case R.id.text_reg:
+                Intent intent = new Intent(TechLoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
                 break;
           /*  case R.id.wxLogin:
                *//* // 微信登录
@@ -127,7 +135,8 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
 
     @Override
     public void showData(LoginBean loginBean) {
-
+        int userId = loginBean.getResult().getUserId();
+        String sessionId = loginBean.getResult().getSessionId();
 
         if(loginBean.getStatus().equals("0000")){
            /* SpUtils.getInstance().saveData("userId", loginBean.getResult().getUserId() + "");
@@ -135,6 +144,17 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
             */
             Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(TechLoginActivity.this,TechHomeActivity.class));
+            //同步之前先查询数据库
+            DaoSession daoSession = App.getDaoSession();
+            GreenBeanDao greenBeanDao = daoSession.getGreenBeanDao();
+            //再添加之前先清空一遍数据库  保证每次查询数据库的数据都是最新的
+            if (greenBeanDao.loadAll().size() > 0){
+                greenBeanDao.deleteAll();
+            }
+            GreenBean greenBean = new GreenBean();
+            greenBean.setUserId(userId);
+            greenBean.setSessionId(sessionId);
+            greenBeanDao.insertOrReplace(greenBean);
         }else {
             Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
         }
