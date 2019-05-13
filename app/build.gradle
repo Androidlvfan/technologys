@@ -83,5 +83,7 @@ dependencies {
     //日志拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.0.2'
+    //Textview展开收缩
+    implementation 'com.jaydenxiao:ExpandableTextView:1.0.0'
+
 }

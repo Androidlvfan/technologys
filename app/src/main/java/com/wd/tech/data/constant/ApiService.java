@@ -1,11 +1,15 @@
 package com.wd.tech.data.constant;
 
+import com.wd.tech.data.bean.CommunityBean;
 import com.wd.tech.data.bean.LoginBean;
 import com.wd.tech.data.bean.RegisterBean;
+import com.wd.tech.data.bean.WxBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -28,8 +32,9 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("techApi/user/v1/weChatLogin")
-    Observable<LoginBean> getWx(@Query("ak") String ak);
+    Observable<WxBean> getWx(@Header("ak") String ak, @Field("code") String code);
 
-
+    @GET("techApi/community/v1/findCommunityList")
+    Observable<CommunityBean> getCommunity(@Query("page") int page, @Query("count") int count);
 
 }
