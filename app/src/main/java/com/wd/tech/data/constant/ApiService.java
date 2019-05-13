@@ -9,6 +9,7 @@ import retrofit2.http.POST;
 
 
 import com.wd.tech.data.bean.LoginBean;
+import com.wd.tech.data.bean.RegisterBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
