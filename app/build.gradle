@@ -39,8 +39,6 @@ android {
     }
 
 
-
-
 }
 
 dependencies {
@@ -84,7 +82,6 @@ dependencies {
     implementation files('libs/MobCommons-2019.0423.2029.jar')
     //日志拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
-
-
-
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.0.2'
 }
