@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="256dp">
+
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/friendmessage"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:roundAsCircle="true"
+        android:id="@+id/showFriendMessageActivity_headImg"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="193dp"
+        fresco:placeholderImage="@mipmap/load_img" />
+
+
+    <TextView
+        android:id="@+id/showFriendMessageActivity_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="206dp"
+        android:layout_toRightOf="@+id/showFriendMessageActivity_headImg"
+        android:text="姓名"
+        android:textColor="#666666"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/showFriendMessageActivity_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="220dp"
+        android:layout_toRightOf="@+id/showFriendMessageActivity_name"
+        android:text="(0积分)"
+        android:textColor="#f00"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/showFriendMessageActivity_qianMing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showFriendMessageActivity_headImg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="世上本无事,庸人自扰"
+        android:textColor="#999999"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/gerenziliao_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showFriendMessageActivity_qianMing"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:text="---------------------个人资料---------------------"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/showFriendMessageActivity_sexBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gerenziliao_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="男(1996-02-16)"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/showFriendMessageActivity_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showFriendMessageActivity_sexBirthday"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="1351158827"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/showFriendMessageActivity_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/showFriendMessageActivity_phone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="1351158827@qq.com"
+        android:textColor="#333333"
+        android:textSize="12sp" />
+
+
+    <Button
+        android:id="@+id/showFriendMessageActivity_addFriendBtn"
+        android:layout_width="336dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/showFriendMessageActivity_phone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="114dp"
+        android:background="@drawable/btn_shape_zcq"
+        android:text="添加好友"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/showFriendMessageActivity_sendMessageBtn"
+        android:layout_width="336dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/showFriendMessageActivity_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="114dp"
+        android:background="@drawable/btn_shape_zcq"
+        android:text="发消息"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

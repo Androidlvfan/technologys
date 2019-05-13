@@ -51,6 +51,9 @@
         <activity android:name=".ui.activity.TechLoginActivity" />
         <activity android:name=".wxapi.WXEntryActivity"
           android:exported="true"></activity>
+        <activity android:name=".ui.activity.AddFriendActivity" />
+        <activity android:name=".ui.activity.CreateGroupActivity" />
+        <activity android:name=".ui.activity.FriendMessageActivity"></activity>
     </application>
 
 </manifest>
