@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/addFriendActivity_back"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/common_nav_btn_back_n"/>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff">
+
+
+
+        <TextView
+            android:id="@+id/addFriendActivity_findPersonText"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="找人"/>
+
+        <TextView
+            android:id="@+id/addFriendActivity_findGroupText"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="找群"/>
+
+        <TextView
+            android:id="@+id/addFriendActivity_findPersonlogo"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_width="36dp"
+            android:layout_height="3dp"
+            android:background="#20affa"/>
+
+        <TextView
+            android:id="@+id/addFriendActivity_findGrouplogo"
+            android:visibility="gone"
+            android:layout_marginRight="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="36dp"
+            android:layout_height="3dp"
+            android:background="#20affa"/>
+
+    </RelativeLayout>
+
+
+
+
+    <LinearLayout
+
+        android:layout_marginTop="10dp"
+        android:id="@+id/addFriendActivity_findPersonLinear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+
+            <ImageView
+                android:id="@+id/addFriendActivity_searchImg"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/common_nav_btn_search_n"/>
+
+            <EditText
+                android:maxLength="11"
+                android:numeric="integer"
+                android:id="@+id/addFriendActivity_findPersonEdit"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColorHint="#ddd"
+                android:layout_toRightOf="@+id/addFriendActivity_searchImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入用户账号"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#20affa"
+            android:textStyle="bold"
+            android:id="@+id/addFriendActivity_notSelResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无查询结果"/>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/addFriendActivity_recyclerView"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:id="@+id/addFriendActivity_findGroupLinear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+
+            <ImageView
+                android:id="@+id/addFriendActivity_searchImg2"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/common_nav_btn_search_n"/>
+
+            <EditText
+                android:numeric="integer"
+                android:maxLength="2"
+                android:id="@+id/addFriendActivity_findGroupEdit"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColorHint="#ddd"
+                android:layout_toRightOf="@+id/addFriendActivity_searchImg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入群号码"
+                />
+
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#20affa"
+            android:textStyle="bold"
+            android:id="@+id/addFriendActivity_notSelResultGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无查询结果"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/addgroup_recyclerView"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
