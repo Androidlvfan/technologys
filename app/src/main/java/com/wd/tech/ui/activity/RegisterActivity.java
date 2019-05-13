@@ -1,5 +1,6 @@
 package com.wd.tech.ui.activity;
 
+
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -250,3 +251,19 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
             return mobileNums.matches(telRegex);
     }
 
+
+
+
+    @Override
+    public void showData(RegisterBean registerBean) {
+        //吐司信息
+        Toast.makeText(this, registerBean.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.deachView(this);
+        cn.smssdk.SMSSDK.unregisterAllEventHandler();
+    }
+}
