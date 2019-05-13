@@ -10,16 +10,16 @@ import com.wd.tech.data.bean.LoginBean;
  * @fileName:RegisterContract
  * @packageName:com.wd.tech.di.contract
  */
-public interface LoginContractClass {
+public interface LoginContract {
 
     public interface LoginView{
         public void showData(LoginBean loginBean);
     }
 
     public interface LoginPresenter<LoginView>{
-        public void attahView(LoginContractClass.LoginView loginView);
+        public void attahView(LoginContract.LoginView loginView);
 
-        public void deachView(LoginContractClass.LoginView loginView);
+        public void deachView(LoginContract.LoginView loginView);
 
         public void requestData(String phone, String pwd);
     }

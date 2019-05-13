@@ -5,14 +5,14 @@ import android.util.Log;
 import com.wd.tech.data.bean.LoginBean;
 import com.wd.tech.data.constant.ApiService;
 import com.wd.tech.data.utils.RetrofitUtils;
-import com.wd.tech.di.contract.LoginContractClass;
+import com.wd.tech.di.contract.LoginContract;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class LoginModel implements LoginContractClass.LoginModel{
+public class LoginModel implements LoginContract.LoginModel{
 
     @Override
     public void containData(String phone, String pwd, final CallBack callBack) {

@@ -1,7 +1,7 @@
 package com.wd.tech.di.presenter;
 
 import com.wd.tech.data.bean.LoginBean;
-import com.wd.tech.di.contract.LoginContractClass;
+import com.wd.tech.di.contract.LoginContract;
 import com.wd.tech.di.model.LoginModel;
 
 import java.lang.ref.SoftReference;
@@ -12,27 +12,27 @@ import java.lang.ref.SoftReference;
  * @fileName:RegisterPresenter
  * @packageName:com.wd.tech.di.presenter
  */
-public class LoginPresenter implements LoginContractClass.LoginPresenter {
+public class LoginPresenter implements LoginContract.LoginPresenter {
 
-    private LoginContractClass.LoginView loginView;
-    private SoftReference<LoginContractClass.LoginView> reference;
+    private LoginContract.LoginView loginView;
+    private SoftReference<LoginContract.LoginView> reference;
     private LoginModel model;
 
     @Override
-    public void attahView(LoginContractClass.LoginView loginView) {
+    public void attahView(LoginContract.LoginView loginView) {
         this.loginView = loginView;
         reference = new SoftReference<>(loginView);
         model = new LoginModel();
     }
 
     @Override
-    public void deachView(LoginContractClass.LoginView loginView) {
+    public void deachView(LoginContract.LoginView loginView) {
         reference.clear();
     }
 
     @Override
     public void requestData(String phone,String pwd) {
-        model.containData(phone, pwd, new LoginContractClass.LoginModel.CallBack() {
+        model.containData(phone, pwd, new LoginContract.LoginModel.CallBack() {
             @Override
             public void onCallBack(LoginBean loginBean) {
                 loginView.showData(loginBean);

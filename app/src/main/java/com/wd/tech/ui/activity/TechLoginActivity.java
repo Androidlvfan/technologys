@@ -17,13 +17,13 @@ import android.widget.Toast;
 import com.wd.tech.R;
 import com.wd.tech.data.bean.LoginBean;
 import com.wd.tech.data.utils.RsaCoder;
-import com.wd.tech.di.contract.LoginContractClass;
+import com.wd.tech.di.contract.LoginContract;
 import com.wd.tech.di.presenter.LoginPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TechLoginActivity extends BaseActivity implements LoginContractClass.LoginView,View.OnClickListener {
+public class TechLoginActivity extends BaseActivity implements LoginContract.LoginView,View.OnClickListener {
 
 
     @BindView(R.id.et_login_name)
@@ -104,6 +104,7 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
 
                 break;
             case R.id.text_reg:
+                startActivity(new Intent(TechLoginActivity.this,RegisterActivity.class));
                 break;
           /*  case R.id.wxLogin:
                *//* // 微信登录
