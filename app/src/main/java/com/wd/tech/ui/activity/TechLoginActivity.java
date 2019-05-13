@@ -19,7 +19,7 @@ import com.wd.tech.data.app.App;
 import com.wd.tech.data.bean.GreenBean;
 import com.wd.tech.data.bean.LoginBean;
 import com.wd.tech.data.utils.RsaCoder;
-import com.wd.tech.di.contract.LoginContractClass;
+import com.wd.tech.di.contract.LoginContract;
 import com.wd.tech.di.presenter.LoginPresenter;
 import com.wd.tech.gen.DaoSession;
 import com.wd.tech.gen.GreenBeanDao;
@@ -29,7 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TechLoginActivity extends BaseActivity implements LoginContractClass.LoginView,View.OnClickListener {
+public class TechLoginActivity extends BaseActivity implements LoginContract.LoginView,View.OnClickListener {
 
 
     @BindView(R.id.et_login_name)
@@ -110,8 +110,7 @@ public class TechLoginActivity extends BaseActivity implements LoginContractClas
 
                 break;
             case R.id.text_reg:
-                Intent intent = new Intent(TechLoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(TechLoginActivity.this,RegisterActivity.class));
                 break;
           /*  case R.id.wxLogin:
                *//* // 微信登录

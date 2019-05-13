@@ -1,7 +1,10 @@
 package com.wd.tech.ui.activity;
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
+=======
+>>>>>>> lhpp
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -15,7 +18,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mob.MobSDK;
+<<<<<<< HEAD
 import com.mob.commons.SMSSDK;
+=======
+>>>>>>> lhpp
 import com.wd.tech.R;
 import com.wd.tech.data.bean.RegisterBean;
 import com.wd.tech.data.utils.RsaCoder;
@@ -256,6 +262,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
             return mobileNums.matches(telRegex);
     }
 
+<<<<<<< HEAD
 
 
     @Override
@@ -271,3 +278,5 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
         cn.smssdk.SMSSDK.unregisterAllEventHandler();
     }
 }
+=======
+>>>>>>> lhpp
