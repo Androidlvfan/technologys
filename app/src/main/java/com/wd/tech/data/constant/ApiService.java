@@ -9,4 +9,5 @@ package com.wd.tech.data.constant;
  */
 public interface ApiService {
 
+
 }
