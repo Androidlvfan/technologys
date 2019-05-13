@@ -1,6 +1,7 @@
 package com.wd.tech.ui.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -37,6 +38,7 @@ public class TechLoginActivity extends BaseActivity implements LoginContract.Log
     @BindView(R.id.raw)
     LinearLayout raw;
     private LoginPresenter loginPresenter;
+    private SharedPreferences preferences;
     boolean tures;
 
     @Override
@@ -137,6 +139,14 @@ public class TechLoginActivity extends BaseActivity implements LoginContract.Log
             */
             Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(TechLoginActivity.this,TechHomeActivity.class));
+            Log.i("userId",loginBean.getResult().getUserId()+"");
+            Log.i("sessionId",loginBean.getResult().getSessionId()+"");
+
+           /* SharedPreferences sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);
+            SharedPreferences.Editor edit = sharedPreferences.edit();
+            edit.putInt("userId",loginBean.getResult().getUserId());
+            edit.putString("sessionId",loginBean.getResult().getSessionId());
+            edit.commit();*/
         }else {
             Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
         }

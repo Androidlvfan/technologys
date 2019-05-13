@@ -1,5 +1,11 @@
 package com.wd.tech.ui.fragment;
 
+import android.graphics.Color;
+import android.os.Build;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
 import com.wd.tech.R;
 
 /**
@@ -22,6 +28,6 @@ public class CommunityFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        //我是小仙吕
+
     }
 }
