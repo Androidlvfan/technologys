@@ -1,10 +1,10 @@
 package com.wd.tech.ui.fragment;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.wd.tech.R;
 import com.wd.tech.data.adapter.CommunityAdapter;
 import com.wd.tech.data.bean.CommunityBean;
@@ -12,6 +12,10 @@ import com.wd.tech.di.contract.CommunityContract;
 import com.wd.tech.di.presenter.CommunityPresenter;
 
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * @author Wyg
@@ -23,9 +27,12 @@ import java.util.List;
 public class CommunityFragment extends BaseFragment implements CommunityContract.CommunityView {
 
 
+    @BindView(R.id.rv)
+    RecyclerView rv;
+    Unbinder unbinder;
     private CommunityPresenter communityPresenter;
-    private RecyclerView rv;
     private CommunityAdapter communityAdapter;
+    private View rootView;
 
 
     @Override
@@ -49,14 +56,9 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }*/
-//        rv = getActivity().findViewById(R.id.rv);
-         Button a  = getActivity().findViewById(R.id.a);
-         a.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Log.e("tag","sdasd");
-             }
-         });
+        Fresco.initialize(getActivity());
+        super.initData();
+        unbinder = ButterKnife.bind(this, mRootView);
         communityPresenter = new CommunityPresenter();
         communityPresenter.attahView(this);
         communityPresenter.requestData(1, 10);
@@ -67,9 +69,9 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
     public void showData(CommunityBean communityBean) {
 
         List<CommunityBean.ResultBean> result = communityBean.getResult();
-//        communityAdapter = new CommunityAdapter(getActivity(), result);
-//        rv.setLayoutManager(new LinearLayoutManager(getContext()));
-//        rv.setAdapter(communityAdapter);
+        communityAdapter = new CommunityAdapter(getActivity(), result);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setAdapter(communityAdapter);
     }
 
     @Override
@@ -79,6 +81,9 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
     }
 
 
-
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
 }

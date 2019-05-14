@@ -2,9 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
 
     <RelativeLayout
         android:id="@+id/recy_wb"
@@ -24,9 +25,16 @@
                 android:id="@+id/community_list_headpic"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                app:viewAspectRatio="1"
                 android:layout_centerHorizontal="true"
+                app:actualImageScaleType="focusCrop"
+                app:progressBarAutoRotateInterval="5000"
+                app:progressBarImageScaleType="centerInside"
+                app:roundedCornerRadius="8dp"
                 app:roundAsCircle="true"/>
+
             <LinearLayout
+                android:id="@+id/fff"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="vertical"
@@ -76,20 +84,21 @@
             app:contentTextSize="12sp"
             app:maxCollapsedLines="2"
             app:textCollapse="@string/collapse"
-            app:textExpand="@string/expand"/>
-        <com.wd.tech.data.app.RecyclerGridView
+            app:textExpand="@string/expand"/>-->
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/community_list_grid_view"
             android:layout_width="match_parent"
-            android:layout_below="@id/community_list_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"/>
+            android:layout_height="200dp"
+            android:layout_marginTop="18dp"
+            android:layout_below="@id/lin_top"
+            />
         <RelativeLayout
             android:id="@+id/rela_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/community_list_grid_view"
-            android:layout_marginTop="24dp">-->
-           <!-- <RelativeLayout
+            android:layout_marginTop="24dp">
+            <RelativeLayout
                 android:id="@+id/community_list_comments"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,13 +119,13 @@
                     android:textColor="#666666"
                     android:layout_marginLeft="6dp"
                     android:text="234"/>
-                <ImageView
+              <!--  <ImageView
                     android:id="@+id/xiaosanjiao"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_below="@id/community_list_comment"
                     android:layout_toLeftOf="@id/community_list_comment_num"
-                    android:src="@drawable/xiaosanjiao"/>
+                    android:src="@drawable/xiaosanjiao"/>-->
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/community_list_praises"
@@ -139,7 +148,7 @@
                     android:text="234"/>
             </RelativeLayout>
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:id="@+id/lin_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -147,6 +156,7 @@
                 android:layout_below="@+id/community_list_praises"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/shape_linear">
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/comment_recy"
                     android:layout_width="match_parent"
@@ -159,8 +169,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="10dp" />
-            </LinearLayout>
-        </RelativeLayout>-->
+            </LinearLayout>-->
+        </RelativeLayout>
 
     </RelativeLayout>
     <View

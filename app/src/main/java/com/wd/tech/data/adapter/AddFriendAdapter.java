@@ -2,14 +2,10 @@ package com.wd.tech.data.adapter;
 
 import android.net.Uri;
 import android.support.annotation.Nullable;
-import android.support.v7.graphics.drawable.DrawerArrowDrawable;
-import android.util.Log;
-import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.facebook.drawee.backends.pipeline.Fresco;
-import com.facebook.drawee.controller.AbstractDraweeController;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wd.tech.R;
