@@ -60,7 +60,7 @@ dependencies {
     //BaseQuickAdapter
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     //Fresco
-    implementation 'com.facebook.fresco:fresco:+'
+    implementation 'com.facebook.fresco:fresco:1.9.0'
     //smart第三方上拉下拉
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-21'

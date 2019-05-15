@@ -1,10 +1,12 @@
 package com.wd.tech.ui.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(initLayout());
        // 沉浸式状态栏   //statusBarDarkFont  原理：如果当前设备支持状态栏字体变色，会设置状态栏字体为黑色，如果当前设备不支持状态栏字体变色，会使当前状态栏加上透明度，否则不执行透明度
-       ImmersionBar.with(this).statusBarDarkFont(true, 0.2f) //解决软键盘与底部输入框冲突问题
+       ImmersionBar.with(this).statusBarDarkFont(true, 0.8f) //解决软键盘与底部输入框冲突问题
                 .init();
         //绑定布局
         ButterKnife.bind(this);
@@ -45,8 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initData();
         initListener();
-
-
+        stateNetWork();
     }
 //    /**
 //     * 生成一个和状态栏大小相同的矩形条
@@ -116,6 +117,33 @@ public abstract class BaseActivity extends AppCompatActivity {
        // 沉浸式状态栏
         ImmersionBar.with(this).statusBarDarkFont(true, 0.2f). //解决软键盘与底部输入框冲突问题
         init();
+    }
+    private void stateNetWork() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            String[] mStatenetwork = new String[]{
+                    //写的权限
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    //读的权限
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                    //入网权限
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    //WIFI权限
+                    Manifest.permission.ACCESS_WIFI_STATE,
+                    //读手机权限
+                    Manifest.permission.READ_PHONE_STATE,
+                    //网络权限
+                    Manifest.permission.INTERNET,
+//                    //相机
+//                    Manifest.permission.CAMERA,
+//                    Manifest.permission.WRITE_APN_SETTINGS,
+//                    Manifest.permission.ACCESS_NETWORK_STATE,
+//                    //定位
+//                    Manifest.permission.LOCATION_HARDWARE,
+//                    Manifest.permission.ACCESS_FINE_LOCATION,
+//                    Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+            };
+            ActivityCompat.requestPermissions(this, mStatenetwork, 100);
+        }
     }
 
     @Override

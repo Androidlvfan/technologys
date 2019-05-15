@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.graphics.drawable.DrawerArrowDrawable;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -34,12 +35,16 @@ public class AddFriendAdapter extends BaseQuickAdapter<AddFriendBean,BaseViewHol
 
     @Override
     protected void convert(BaseViewHolder helper, AddFriendBean item) {
-
+        //头像
         SimpleDraweeView img = helper.getView(R.id.QueryFriendRecyclerViewItem_img);
-        Uri uri = Uri.parse(item.getResult().getHeadPic());
-        DraweeController controller = Fresco.newDraweeControllerBuilder().setUri(uri).build();
-        img.setController(controller);
+//        Uri uri = Uri.parse(item.getResult().getHeadPic());
+//        DraweeController controller = Fresco.newDraweeControllerBuilder().setUri(uri).build();
+//        img.setController(controller);
+        img.setImageURI(Uri.parse(item.getResult().getHeadPic()));
+        Log.d(TAG, "aaaaa头像"+item.getResult().getHeadPic());
+        //名字
 
-        helper.setText(R.id.QueryFriendRecyclerViewItem_name,item.getResult().getNickName());
+        TextView textView  =helper.getView(R.id.QueryFriendRecyclerViewItem_name);
+        textView.setText(item.getResult().getNickName());
     }
 }
