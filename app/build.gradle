@@ -87,11 +87,13 @@ dependencies {
     implementation 'com.jaydenxiao:ExpandableTextView:1.0.0'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
-
     implementation 'com.android.support:design:28.0.0'
     implementation 'de.hdodenhof:circleimageview:2.1.0'
-
-
-
-
+    implementation 'com.jeremyfeinstein.slidingmenu:library:1.3@aar'
+    implementation files('libs/ageestimation.jar')
+    implementation files('libs/alipaySdk-20180601.jar')
+    implementation files('libs/facedetection.jar')
+    implementation files('libs/facerecognition.jar')
+    implementation files('libs/facetracking.jar')
+    implementation files('libs/genderestimation.jar')
 }

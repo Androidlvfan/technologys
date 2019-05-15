@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linear_layout_container"
+    tools:context=".ui.activity.DealActivity"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+        <TextView
+            android:id="@+id/txt_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/txt_publish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/txt_cancel"
+            android:text="发表"
+            android:textSize="16sp"
+            android:textColor="#20affa"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+        <EditText
+            android:id="@+id/community_publish_content"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:padding="12dp"
+            android:minLines="5"
+            android:maxLength="300"
+            android:gravity="top"
+            android:background="@drawable/community_edt_note_bg"
+            android:textColor="#181818"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/community_publish_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/community_publish_content"
+            android:layout_alignParentEnd="true"
+            android:text="0/300"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/community_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"/>
+
+</LinearLayout>

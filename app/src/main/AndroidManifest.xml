@@ -14,7 +14,8 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
     <application
@@ -23,12 +24,13 @@
         android:icon="@drawable/zzpic10907"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".ui.activity.TechStartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -49,11 +51,14 @@
             android:value="640" />
 
         <activity android:name=".ui.activity.TechLoginActivity" />
-        <activity android:name=".wxapi.WXEntryActivity"
-          android:exported="true"></activity>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true" />
         <activity android:name=".ui.activity.AddFriendActivity" />
         <activity android:name=".ui.activity.CreateGroupActivity" />
-        <activity android:name=".ui.activity.FriendMessageActivity"></activity>
+        <activity android:name=".ui.activity.FriendMessageActivity" />
+        <activity android:name=".ui.activity.DealActivity" />
+        <activity android:name=".ui.activity.AllCommentActivity" />
     </application>
 
 </manifest>

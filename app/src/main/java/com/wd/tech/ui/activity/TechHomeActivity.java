@@ -1,5 +1,6 @@
 package com.wd.tech.ui.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
@@ -42,6 +43,7 @@ public class TechHomeActivity extends BaseActivity {
     @Override
     protected void initData() {
         ButterKnife.bind(this);
+
 
         //创建集合 添加fragment
         list = new ArrayList<>();
@@ -86,5 +88,12 @@ public class TechHomeActivity extends BaseActivity {
                 viewPager.setCurrentItem(2);
                 break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

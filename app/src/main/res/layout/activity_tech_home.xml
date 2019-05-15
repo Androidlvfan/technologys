@@ -7,23 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activity.TechHomeActivity">
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:id="@+id/toolbar">
-
-    </android.support.v7.widget.Toolbar>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#eee"/>
-
-    <android.support.v4.widget.DrawerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/drawerLayout"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,8 +23,9 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"></com.wd.tech.data.utils.NoScrollViewPager>
+            android:layout_marginTop="0dp">
 
+        </com.wd.tech.data.utils.NoScrollViewPager>
 
         <RadioGroup
             android:id="@+id/activityHome_radioGroup"

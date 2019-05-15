@@ -1,8 +1,10 @@
 package com.wd.tech.ui.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.wd.tech.R;
@@ -10,6 +12,7 @@ import com.wd.tech.data.adapter.CommunityAdapter;
 import com.wd.tech.data.bean.CommunityBean;
 import com.wd.tech.di.contract.CommunityContract;
 import com.wd.tech.di.presenter.CommunityPresenter;
+import com.wd.tech.ui.activity.DealActivity;
 
 import java.util.List;
 
@@ -30,9 +33,10 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
     @BindView(R.id.rv)
     RecyclerView rv;
     Unbinder unbinder;
+    @BindView(R.id.Community_write)
+    ImageView CommunityWrite;
+    Unbinder unbinder1;
     private CommunityPresenter communityPresenter;
-    private CommunityAdapter communityAdapter;
-    private View rootView;
 
 
     @Override
@@ -47,15 +51,7 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
 
     @Override
     protected void initData() {
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getActivity().getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }*/
+
         Fresco.initialize(getActivity());
         super.initData();
         unbinder = ButterKnife.bind(this, mRootView);
@@ -63,14 +59,23 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
         communityPresenter.attahView(this);
         communityPresenter.requestData(1, 10);
 
+        CommunityWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),DealActivity.class));
+                getActivity().finish();
+            }
+        });
+
+
     }
 
     @Override
     public void showData(CommunityBean communityBean) {
 
         List<CommunityBean.ResultBean> result = communityBean.getResult();
-        communityAdapter = new CommunityAdapter(getActivity(), result);
-        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        CommunityAdapter communityAdapter = new CommunityAdapter(getActivity(), result);
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rv.setAdapter(communityAdapter);
     }
 
@@ -86,4 +91,6 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
         super.onDestroyView();
         unbinder.unbind();
     }
+
+
 }

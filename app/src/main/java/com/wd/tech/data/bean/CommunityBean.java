@@ -4,9 +4,8 @@ import java.util.List;
 
 public class CommunityBean {
 
-
     /**
-     * result : [{"comment":0,"communityCommentVoList":[],"content":"我不知道","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":779,"nickName":"闫向向","praise":1,"publishTime":1557746125000,"userId":339,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":778,"nickName":"闫向","praise":5,"publishTime":1557745798000,"userId":425,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":777,"nickName":"闫向","praise":2,"publishTime":1557745726000,"userId":425,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":1,"communityCommentVoList":[{"content":"快","nickName":"块签","userId":370}],"content":"121212","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":776,"nickName":"楚云飞","praise":8,"publishTime":1557738475000,"userId":389,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":2,"communityCommentVoList":[{"content":"徐红糖","nickName":"Bg","userId":477},{"content":"asd","nickName":"haoran123","userId":502}],"content":"我是谢大炮。。。。。。。","file":"http://mobile.bwstudent.com/images/tech/community_pic/2019-05-13/2318420190513163225.png,http://mobile.bwstudent.com/images/tech/community_pic/2019-05-13/4786020190513163225.png,http://mobile.bwstudent.com/images/tech/community_pic/2019-05-13/3689420190513163225.png","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":775,"nickName":"你","praise":0,"publishTime":1557736345000,"signature":"去去去","userId":479,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":2,"communityCommentVoList":[{"content":"？？","nickName":"gyy","userId":357},{"content":"123","nickName":"你给我冷静一点","userId":369}],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":774,"nickName":"闫向向","praise":1,"publishTime":1557735475000,"userId":339,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":1,"communityCommentVoList":[{"content":"1111","nickName":"你给我冷静一点","userId":369}],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":772,"nickName":"闫向向","praise":3,"publishTime":1557735291000,"userId":339,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":773,"nickName":"闫向向","praise":1,"publishTime":1557735291000,"userId":339,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":768,"nickName":"闫向向","praise":0,"publishTime":1557735290000,"userId":339,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"123","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":769,"nickName":"闫向向","praise":0,"publishTime":1557735290000,"userId":339,"whetherFollow":2,"whetherGreat":2,"whetherVip":2}]
+     * result : [{"comment":3,"communityCommentVoList":[{"content":"傻逼儿子，看你那揍性","nickName":"qq","userId":398},{"content":"我是你爹啊，傻逼儿子","nickName":"朱砂","userId":337},{"content":"对对对","nickName":"qq","userId":398}],"content":"1609B朱砂就是个傻逼，如果认为是的点个赞","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":785,"nickName":"qq","praise":13,"publishTime":1557749466000,"userId":398,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":1,"communityCommentVoList":[{"content":"哈哈","nickName":"云闲","userId":451}],"content":"","file":"http://mobile.bwstudent.com/images/tech/community_pic/2019-05-13/6923420190513194927.png","headPic":"http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIfmzKObE2HZ9XLszk3jtYw0ucIX5u7gBW7NeeXURJfhBlIxZ1C6ABNFGNO8TB6urCMPt7RWbvfFg/132","id":784,"nickName":"等风来_GZY","praise":9,"publishTime":1557748167000,"userId":507,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":1,"communityCommentVoList":[{"content":"1","nickName":"云闲","userId":451}],"content":"哈哈","file":"","headPic":"http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIfmzKObE2HZ9XLszk3jtYw0ucIX5u7gBW7NeeXURJfhBlIxZ1C6ABNFGNO8TB6urCMPt7RWbvfFg/132","id":783,"nickName":"等风来_GZY","praise":2,"publishTime":1557748097000,"userId":507,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":1,"communityCommentVoList":[{"content":"哈哈","nickName":"云闲","userId":451}],"content":"Fghjkk","file":"","headPic":"http://mobile.bwstudent.com/images/tech/default/tech.jpg","id":782,"nickName":"闫向","praise":8,"publishTime":1557746973000,"userId":425,"whetherFollow":2,"whetherGreat":2,"whetherVip":2},{"comment":0,"communityCommentVoList":[],"content":"","file":"http://mobile.bwstudent.com/images/tech/community_pic/2019-05-13/6145320190513192541.jpg,http://mobile.bwstudent.com/images/tech/community_pic/2019-05-13/9014220190513192541.jpg","headPic":"http://mobile.bwstudent.com/images/tech/head_pic/2019-05-09/20190509091210.jpg","id":781,"nickName":"gyy","praise":4,"publishTime":1557746741000,"userId":357,"whetherFollow":2,"whetherGreat":2,"whetherVip":2}]
      * message : 查询成功
      * status : 0000
      */
@@ -41,20 +40,19 @@ public class CommunityBean {
 
     public static class ResultBean {
         /**
-         * comment : 0
-         * communityCommentVoList : []
-         * content : 我不知道
+         * comment : 3
+         * communityCommentVoList : [{"content":"傻逼儿子，看你那揍性","nickName":"qq","userId":398},{"content":"我是你爹啊，傻逼儿子","nickName":"朱砂","userId":337},{"content":"对对对","nickName":"qq","userId":398}]
+         * content : 1609B朱砂就是个傻逼，如果认为是的点个赞
          * file :
          * headPic : http://mobile.bwstudent.com/images/tech/default/tech.jpg
-         * id : 779
-         * nickName : 闫向向
-         * praise : 1
-         * publishTime : 1557746125000
-         * userId : 339
+         * id : 785
+         * nickName : qq
+         * praise : 13
+         * publishTime : 1557749466000
+         * userId : 398
          * whetherFollow : 2
          * whetherGreat : 2
          * whetherVip : 2
-         * signature : 去去去
          */
 
         private int comment;
@@ -70,7 +68,15 @@ public class CommunityBean {
         private int whetherGreat;
         private int whetherVip;
         private String signature;
-        private List<?> communityCommentVoList;
+        private List<CommunityCommentVoListBean> communityCommentVoList;
+
+        public String getSignature() {
+            return signature;
+        }
+
+        public void setSignature(String signature) {
+            this.signature = signature;
+        }
 
         public int getComment() {
             return comment;
@@ -168,20 +174,48 @@ public class CommunityBean {
             this.whetherVip = whetherVip;
         }
 
-        public String getSignature() {
-            return signature;
-        }
-
-        public void setSignature(String signature) {
-            this.signature = signature;
-        }
-
-        public List<?> getCommunityCommentVoList() {
+        public List<CommunityCommentVoListBean> getCommunityCommentVoList() {
             return communityCommentVoList;
         }
 
-        public void setCommunityCommentVoList(List<?> communityCommentVoList) {
+        public void setCommunityCommentVoList(List<CommunityCommentVoListBean> communityCommentVoList) {
             this.communityCommentVoList = communityCommentVoList;
+        }
+
+        public static class CommunityCommentVoListBean {
+            /**
+             * content : 傻逼儿子，看你那揍性
+             * nickName : qq
+             * userId : 398
+             */
+
+            private String content;
+            private String nickName;
+            private int userId;
+
+            public String getContent() {
+                return content;
+            }
+
+            public void setContent(String content) {
+                this.content = content;
+            }
+
+            public String getNickName() {
+                return nickName;
+            }
+
+            public void setNickName(String nickName) {
+                this.nickName = nickName;
+            }
+
+            public int getUserId() {
+                return userId;
+            }
+
+            public void setUserId(int userId) {
+                this.userId = userId;
+            }
         }
     }
 }
