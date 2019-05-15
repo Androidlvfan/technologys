@@ -18,6 +18,9 @@ import android.widget.RelativeLayout;
 import com.wd.tech.R;
 import com.wd.tech.ui.activity.AddFriendActivity;
 import com.wd.tech.ui.activity.CreateGroupActivity;
+import com.wd.tech.ui.activity.FriendNotifyActivity;
+import com.wd.tech.ui.activity.GroupActivity;
+import com.wd.tech.ui.activity.GroupNotifyActivity;
 
 import java.io.PipedOutputStream;
 
@@ -112,7 +115,30 @@ public class MessageFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
-
+        //点击群组
+        fragmentMessageRelativeLayoutGroupIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GroupActivity.class);
+                startActivity(intent);
+            }
+        });
+        //点击群组通知
+        fragmentMessageRelativeLayoutGroupNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), GroupNotifyActivity.class);
+                startActivity(intent);
+            }
+        });
+        //点击好友通知
+        fragmentMessageRelativeLayoutFriendNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), FriendNotifyActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void changeMessagePersonListener() {
