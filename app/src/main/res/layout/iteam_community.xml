@@ -85,13 +85,12 @@
             app:maxCollapsedLines="2"
             app:textCollapse="@string/collapse"
             app:textExpand="@string/expand"/>-->
-        <android.support.v7.widget.RecyclerView
+        <com.wd.tech.data.app.RecyclerGridView
             android:id="@+id/community_list_grid_view"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="18dp"
             android:layout_below="@id/lin_top"
-            />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"/>
         <RelativeLayout
             android:id="@+id/rela_bottom"
             android:layout_width="match_parent"
@@ -108,7 +107,7 @@
                     android:id="@+id/community_list_comment"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@mipmap/common_icon_comment_n_xhdpi"
+                    app:srcCompat="@mipmap/common_icon_comment_n_xhdpi"
                     android:layout_marginLeft="10dp"/>
                 <TextView
                     android:id="@+id/community_list_comment_num"
@@ -129,7 +128,7 @@
                     android:id="@+id/community_list_praise"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:src="@mipmap/common_icon_prise_n_xhdpi"/>
+                    app:srcCompat="@mipmap/common_icon_prise_n_xhdpi"/>
                 <TextView
                     android:id="@+id/community_list_praise_num"
                     android:layout_width="wrap_content"

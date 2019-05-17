@@ -59,6 +59,9 @@
         <activity android:name=".ui.activity.FriendMessageActivity" />
         <activity android:name=".ui.activity.DealActivity" />
         <activity android:name=".ui.activity.AllCommentActivity" />
+        <activity
+            android:name=".ui.activity.FangActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

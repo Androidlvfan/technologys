@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +17,8 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wd.tech.R;
 import com.wd.tech.data.app.DataUtils;
+import com.wd.tech.data.app.RecyclerGridView;
+import com.wd.tech.data.app.StringUtils;
 import com.wd.tech.data.bean.CommunityBean;
 import com.wd.tech.ui.activity.AllCommentActivity;
 
@@ -31,10 +32,22 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.MyVi
     private List<CommunityBean.ResultBean> resultBeans ;
     private List<CommunityBean.ResultBean.CommunityCommentVoListBean> commentVoList;
     private CommentAdapter commentAdapter;
-
+    private int mImageCount;
     public CommunityAdapter(Context context, List<CommunityBean.ResultBean> resultBeans) {
         this.context = context;
         this.resultBeans = resultBeans;
+    }
+
+    public void addAll(List<CommunityBean.ResultBean> result) {
+        if (result !=null){
+            resultBeans.addAll(result);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void clear() {
+        resultBeans.clear();
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -88,38 +101,59 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.MyVi
             myView.comment_pl.setTextColor(Color.parseColor("#999999"));
         }
 
+        //登录用户是否点过赞
+        if (resultBeans.get(i).getWhetherGreat()==1){
+            myView.community_list_praise.setImageResource(R.mipmap.common_icon_praise_s_xhdpi);
+        } else {
+            myView.community_list_praise.setImageResource(R.mipmap.common_icon_prise_n_xhdpi);
+        }
+
+        //点赞监听
+        myView.community_list_praise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int whetherGreat = resultBeans.get(i).getWhetherGreat();
+                if (mOnCommunityListClickListener !=null){
+                    mOnCommunityListClickListener.onmPraiseClick(resultBeans.get(i).getId(),whetherGreat);
+                }
+                if (resultBeans.get(i).getWhetherGreat()==2){
+                    resultBeans.get(i).setWhetherGreat(1);
+                    resultBeans.get(i).setPraise(resultBeans.get(i).getPraise()+1);
+                    notifyItemChanged(i);
+                }else {
+                    resultBeans.get(i).setWhetherGreat(2);
+                    resultBeans.get(i).setPraise(resultBeans.get(i).getPraise()-1);
+                    notifyItemChanged(i);
+                }
+            }
+        });
 
 
 
-
+        //图片
         String file = resultBeans.get(i).getFile();
         String[] split = file.split(",");
         //判断图片是否为空 如果是，就隐藏图片的recyclerview
-        if (file.isEmpty()) {
+        //图片
+        if (StringUtils.isEmpty(resultBeans.get(i).getFile())){
             myView.community_list_grid_view.setVisibility(View.GONE);
-        } else {
+        }else{
             myView.community_list_grid_view.setVisibility(View.VISIBLE);
-            ImageAdapter imageAdapter = new ImageAdapter(context);
-
-            int imageCount = split.length;
+            String[] images = resultBeans.get(i).getFile().split(",");
+            mImageCount = images.length;
             int colNum;//列数
-            if (imageCount == 1) {
+            if (mImageCount == 1){
                 colNum = 1;
-            } else if (imageCount == 2 || imageCount >= 4) {
+            }else if (mImageCount == 2||mImageCount == 4){
                 colNum = 2;
-            } else {
+            }else {
                 colNum = 3;
             }
 
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 3);
-
-            gridLayoutManager.setSpanCount(colNum);
-            imageAdapter.notifyDataSetChanged();
-            imageAdapter.addAll(Arrays.asList(split));
-            myView.community_list_grid_view.setLayoutManager(gridLayoutManager);
-            myView.community_list_grid_view.setAdapter(imageAdapter);
-
-
+            myView.imageAdapter.clear();
+            myView.imageAdapter.addAll(Arrays.asList(images));
+            myView.community_list_grid_view.setNumColumns(colNum);
+            myView.imageAdapter.notifyDataSetChanged();
 
         }
     }
@@ -132,18 +166,20 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.MyVi
        return 0;
     }
 
-    public class MyView extends RecyclerView.ViewHolder{
+        public class MyView extends RecyclerView.ViewHolder{
 
         private final SimpleDraweeView community_list_headpic;
         private final TextView community_list_nickname;
         private final TextView community_list_publishtime;
         private final TextView community_list_signature;
         private final ImageView community_list_comment;
-        private final RecyclerView community_list_grid_view;
+        private final ImageView community_list_praise;
+        private final RecyclerGridView community_list_grid_view;
         private final TextView community_list_praise_num;
         private final TextView community_list_comment_num;
         private final TextView comment_pl;
         private final RecyclerView comment_recy;
+        private final ImageAdapter imageAdapter;
 
 
         public MyView(@NonNull View itemView) {
@@ -153,12 +189,34 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.MyVi
             community_list_publishtime = itemView.findViewById(R.id.community_list_publishtime);
             community_list_signature = itemView.findViewById(R.id.community_list_signature);
             community_list_comment = itemView.findViewById(R.id.community_list_comment);
+            community_list_praise = itemView.findViewById(R.id.community_list_praise);
             community_list_grid_view = itemView.findViewById(R.id.community_list_grid_view);
             community_list_praise_num = itemView.findViewById(R.id.community_list_praise_num);
             community_list_comment_num = itemView.findViewById(R.id.community_list_comment_num);
             comment_recy = itemView.findViewById(R.id.comment_recy);
             comment_pl = itemView.findViewById(R.id.comment_pl);
+            imageAdapter = new ImageAdapter();
+            int space = context.getResources().getDimensionPixelSize(R.dimen.dp_10);;//图片间距
+            community_list_grid_view.setHorizontalSpacing(space);
+            community_list_grid_view.setVerticalSpacing(space);
+            community_list_grid_view.setAdapter(imageAdapter);
 
         }
+    }
+
+    //接口回调
+    public interface onCommunityListClickListener{
+        //点击头像
+        void onmHeadPicClick(int userid);
+        //评论
+        void onmCommentClick(int id,String name);
+        //点赞
+        void onmPraiseClick(int id,int whetherGreat);
+    }
+
+    public onCommunityListClickListener mOnCommunityListClickListener;
+
+    public void setOnCommunityListClickListener(onCommunityListClickListener onCommunityListClickListener){
+        mOnCommunityListClickListener = onCommunityListClickListener;
     }
 }

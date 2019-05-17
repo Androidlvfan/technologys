@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,7 +18,7 @@
             android:layout_marginLeft="20dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/common_nav_btn_back_n"/>
+            app:srcCompat="@mipmap/common_nav_btn_back_n"/>
 
         <TextView
             android:layout_centerVertical="true"
@@ -105,7 +106,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/common_nav_btn_search_n"/>
+                app:srcCompat="@mipmap/common_nav_btn_search_n"/>
 
             <EditText
                 android:maxLength="11"
@@ -168,7 +169,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/common_nav_btn_search_n"/>
+                app:srcCompat="@mipmap/common_nav_btn_search_n"/>
 
             <EditText
                 android:numeric="integer"

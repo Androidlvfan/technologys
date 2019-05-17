@@ -96,4 +96,9 @@ dependencies {
     implementation files('libs/facerecognition.jar')
     implementation files('libs/facetracking.jar')
     implementation files('libs/genderestimation.jar')
+
+    implementation 'com.ycjiang:imgepreviewlibrary:1.1.3'
+
+    //imgageLoader
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }

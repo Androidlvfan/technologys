@@ -36,7 +36,7 @@
           android:layout_marginBottom="80dp"
           android:background="@drawable/publishnews"
           android:padding="9dp"
-          android:src="@mipmap/community_btn_publish_n" />
+          app:srcCompat="@mipmap/community_btn_publish_n" />
 
 
 </RelativeLayout>

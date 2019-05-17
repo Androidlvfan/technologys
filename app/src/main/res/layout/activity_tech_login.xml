@@ -123,7 +123,7 @@
             android:layout_height="@dimen/dp_40"
             android:layout_marginLeft="120dp"
             android:layout_alignParentLeft="true"
-            android:src="@mipmap/common_icon_weixin_n_xhdpi"/>
+            app:srcCompat="@mipmap/common_icon_weixin_n_xhdpi"/>
 
         <ImageView
             android:id="@+id/ren_login"
@@ -132,7 +132,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="120dp"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/login_icon_artigence_xhdpi"/>
+            app:srcCompat="@mipmap/login_icon_artigence_xhdpi"/>
 
     </RelativeLayout>
 

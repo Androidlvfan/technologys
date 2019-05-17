@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -33,7 +34,10 @@ public class TechHomeActivity extends BaseActivity {
     @BindView(R.id.activityHome_radioGroup)
     RadioGroup activityHomeRadioGroup;
     private List<Fragment> list;
-
+    public ViewGroup ninePlaceGridView;//外部设置
+    public Object imageId;//外部设置
+    public List<Object> imageIds;//外部设置
+    public int currentIndex;//外部设置
 
     @Override
     protected int initLayout() {
@@ -70,6 +74,8 @@ public class TechHomeActivity extends BaseActivity {
     protected void initListener() {
 
     }
+
+
 
 
     @OnClick({R.id.activityHome_zxBtn, R.id.activityHome_messageBtn, R.id.activityHome_groupBtn})
