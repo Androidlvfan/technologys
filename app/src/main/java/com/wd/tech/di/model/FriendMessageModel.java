@@ -1,5 +1,6 @@
 package com.wd.tech.di.model;
 
+import com.wd.tech.data.bean.AddIngFriendBean;
 import com.wd.tech.data.bean.CheckMyFriendBean;
 import com.wd.tech.data.bean.QueryFriendMessageBean;
 import com.wd.tech.data.constant.ApiService;
@@ -51,6 +52,25 @@ public class FriendMessageModel implements FriendMessageContract.FriendMessageMo
                     @Override
                     public void accept(CheckMyFriendBean checkMyFriendBean) throws Exception {
                         callBack.onCheckFriendCallBack(checkMyFriendBean);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                    }
+                });
+    }
+
+    @Override
+    public void containUpdBeiZhuData(int userId, String sessionId, int friendUid, String remarkName, final CallBack callBack) {
+        Observable<AddIngFriendBean> observable = RetrofitUtils.getInstance().create(ApiService.class).getUpdBeiZhuData(userId, sessionId, friendUid, remarkName);
+        observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<AddIngFriendBean>() {
+                    @Override
+                    public void accept(AddIngFriendBean addIngFriendBean) throws Exception {
+                        callBack.onUpdBeiZhuCallBack(addIngFriendBean);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.GroupChatActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/chatActivity_reative"
+        android:layout_alignParentTop="true"
+        android:background="#20afda"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+
+        <ImageView
+            android:id="@+id/friendchat_back"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/common_nav_btn_back_n"/>
+
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/chatActivity_friendName"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="王耀光"/>
+
+
+        <ImageView
+            android:id="@+id/friendChatActivity_moreBtn"
+            android:layout_marginRight="20dp"
+
+            android:layout_marginTop="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/more_btn"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/chatActivity_reative"
+        android:id="@+id/chat_Recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="120dp">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+    <cn.jiguang.imui.chatinput.ChatInputView
+        android:id="@+id/chat_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:cameraBtnIcon="@drawable/aurora_menuitem_camera"
+        app:inputCursorDrawable="@drawable/aurora_edittext_cursor_bg"
+        app:inputEditTextBg="@drawable/aurora_edittext_bg"
+        app:inputHint="请输入消息"
+        app:photoBtnIcon="@drawable/aurora_menuitem_photo"
+        app:sendBtnIcon="@drawable/aurora_menuitem_send"
+        app:voiceBtnIcon="@drawable/aurora_menuitem_mic" />
+
+</RelativeLayout>

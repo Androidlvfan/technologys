@@ -17,6 +17,7 @@ import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.wd.tech.R;
 import com.wd.tech.data.app.App;
+import com.wd.tech.data.bean.AddIngFriendBean;
 import com.wd.tech.data.bean.CheckMyFriendBean;
 import com.wd.tech.data.bean.GreenBean;
 import com.wd.tech.data.bean.QueryFriendMessageBean;
@@ -108,6 +109,16 @@ public class FriendMessageActivity extends BaseActivity implements FriendMessage
                 startActivity(intent);
             }
         });
+        //点击发送消息
+        showFriendMessageActivitySendMessageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FriendMessageActivity.this, FriendChatActivity.class);
+                intent.putExtra("friendName",result.getNickName());
+                intent.putExtra("userId",result.getUserId());
+                startActivity(intent);
+            }
+        });
     }
 
     //好友信息的回调
@@ -154,6 +165,11 @@ public class FriendMessageActivity extends BaseActivity implements FriendMessage
             showFriendMessageActivityAddFriendBtn.setVisibility(View.VISIBLE);
             showFriendMessageActivitySendMessageBtn.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void showUpdBeiZhuData(AddIngFriendBean addIngFriendBean) {
+
     }
 
     @Override

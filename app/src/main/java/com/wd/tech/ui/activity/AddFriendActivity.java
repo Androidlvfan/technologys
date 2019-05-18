@@ -168,7 +168,7 @@ public class AddFriendActivity extends BaseActivity implements AddFriendContract
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (s.length() > 1){
+                if (s.length() == 1 || s.length() == 2){
                     addFriendActivityNotSelResult.setVisibility(View.GONE);
                     String editgroup = addFriendActivityFindGroupEdit.getText().toString();
                     int groupId = Integer.parseInt(editgroup);

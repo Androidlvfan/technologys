@@ -1,5 +1,6 @@
 package com.wd.tech.di.presenter;
 
+import com.wd.tech.data.bean.AddIngFriendBean;
 import com.wd.tech.data.bean.CheckMyFriendBean;
 import com.wd.tech.data.bean.QueryFriendMessageBean;
 import com.wd.tech.di.contract.FriendMessageContract;
@@ -46,6 +47,11 @@ public class FriendMessagePresenter implements FriendMessageContract.FriendMessa
             public void onCheckFriendCallBack(CheckMyFriendBean checkMyFriendBean) {
 
             }
+
+            @Override
+            public void onUpdBeiZhuCallBack(AddIngFriendBean addIngFriendBean) {
+
+            }
         });
     }
 
@@ -60,6 +66,31 @@ public class FriendMessagePresenter implements FriendMessageContract.FriendMessa
             @Override
             public void onCheckFriendCallBack(CheckMyFriendBean checkMyFriendBean) {
                 friendMessageView.showCheckFriendData(checkMyFriendBean);
+            }
+
+            @Override
+            public void onUpdBeiZhuCallBack(AddIngFriendBean addIngFriendBean) {
+
+            }
+        });
+    }
+
+    @Override
+    public void requestUpdBeiZhuData(int userId, String sessionId, int friendUid, String remarkName) {
+        model.containUpdBeiZhuData(userId, sessionId, friendUid, remarkName, new FriendMessageContract.FriendMessageModel.CallBack() {
+            @Override
+            public void onCallBack(QueryFriendMessageBean queryFriendMessageBean) {
+
+            }
+
+            @Override
+            public void onCheckFriendCallBack(CheckMyFriendBean checkMyFriendBean) {
+
+            }
+
+            @Override
+            public void onUpdBeiZhuCallBack(AddIngFriendBean addIngFriendBean) {
+                friendMessageView.showUpdBeiZhuData(addIngFriendBean);
             }
         });
     }
