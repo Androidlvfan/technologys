@@ -1,5 +1,6 @@
 package com.wd.tech.di.contract;
 
+import com.wd.tech.data.bean.AddIngFriendBean;
 import com.wd.tech.data.bean.CheckMyFriendBean;
 import com.wd.tech.data.bean.QueryFriendMessageBean;
 import com.wd.tech.data.bean.RegisterBean;
@@ -17,6 +18,8 @@ public interface FriendMessageContract {
         public void showData(QueryFriendMessageBean queryFriendMessageBean);
 
         public void showCheckFriendData(CheckMyFriendBean checkMyFriendBean);
+
+        public void showUpdBeiZhuData(AddIngFriendBean addIngFriendBean);
     }
 
     public interface FriendMessagePresenter<FriendMessageView>{
@@ -26,14 +29,17 @@ public interface FriendMessageContract {
 
         public void requestData(int userId,String sessionId,int friend);
         public void requestCheckFriendData(int userId,String sessionId,int friendUid);
+        public void requestUpdBeiZhuData(int userId,String sessionId,int friendUid,String remarkName);
     }
 
     public interface FriendMessageModel{
         public void containData(int userId,String sessionId,int friend,CallBack callBack);
         public void containCheckFriendData(int userId,String sessionId,int friendUid,CallBack callBack);
+        public void containUpdBeiZhuData(int userId,String sessionId,int friendUid,String remarkName,CallBack callBack);
         public interface CallBack{
             public void onCallBack(QueryFriendMessageBean queryFriendMessageBean);
             public void onCheckFriendCallBack(CheckMyFriendBean checkMyFriendBean);
+            public void onUpdBeiZhuCallBack(AddIngFriendBean addIngFriendBean);
         }
     }
 }

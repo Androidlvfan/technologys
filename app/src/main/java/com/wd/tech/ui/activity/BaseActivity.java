@@ -115,7 +115,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onStart();
 //        mForegroundActivity = this;
        // 沉浸式状态栏
-        ImmersionBar.with(this).statusBarDarkFont(true, 0.2f). //解决软键盘与底部输入框冲突问题
+        ImmersionBar.with(this).statusBarDarkFont(true, 0.2f).transparentStatusBar().
         init();
     }
     private void stateNetWork() {
@@ -133,14 +133,16 @@ public abstract class BaseActivity extends AppCompatActivity {
                     Manifest.permission.READ_PHONE_STATE,
                     //网络权限
                     Manifest.permission.INTERNET,
-//                    //相机
-//                    Manifest.permission.CAMERA,
-//                    Manifest.permission.WRITE_APN_SETTINGS,
-//                    Manifest.permission.ACCESS_NETWORK_STATE,
-//                    //定位
-//                    Manifest.permission.LOCATION_HARDWARE,
-//                    Manifest.permission.ACCESS_FINE_LOCATION,
-//                    Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+                    //相机
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_APN_SETTINGS,
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    //定位
+                    Manifest.permission.LOCATION_HARDWARE,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_LOCATION_EXTRA_COMMANDS,
+                    //录音
+                    Manifest.permission.RECORD_AUDIO
             };
             ActivityCompat.requestPermissions(this, mStatenetwork, 100);
         }

@@ -1,5 +1,6 @@
 package com.wd.tech.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -115,23 +117,44 @@ public class GroupActivity extends BaseActivity implements GroupContract.GroupVi
 
     //创建的群聊的回调
     @Override
-    public void showGroupsByUserData(GroupBean groupBean) {
-        List<GroupBean.ResultBean> result = groupBean.getResult();
+    public void showGroupsByUserData(final GroupBean groupBean) {
+        final List<GroupBean.ResultBean> result = groupBean.getResult();
         GroupsByUserAdapter groupsByUserAdapter = new GroupsByUserAdapter(R.layout.group_item_layout,result);
         findGroupsRecycle.setAdapter(groupsByUserAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         findGroupsRecycle.setLayoutManager(linearLayoutManager);
+
+        groupsByUserAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(GroupActivity.this, GroupChatActivity.class);
+                intent.putExtra("groupId",groupBean.getResult().get(position).getGroupId());
+                intent.putExtra("groupImg",result.get(position).getGroupImage());
+                intent.putExtra("groupName",result.get(position).getGroupName());
+                startActivity(intent);
+            }
+        });
     }
     //加入的群聊的回调
     @Override
-    public void showJoinedGroupData(GroupBean groupBean) {
+    public void showJoinedGroupData(final GroupBean groupBean) {
         Log.d("GroupActivity", groupBean.getMessage());
-        List<GroupBean.ResultBean> result = groupBean.getResult();
+        final List<GroupBean.ResultBean> result = groupBean.getResult();
         GroupsByUserAdapter groupsByUserAdapter = new GroupsByUserAdapter(R.layout.group_item_layout,result);
         groupsJoinedRecy.setAdapter(groupsByUserAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         groupsJoinedRecy.setLayoutManager(linearLayoutManager);
 
+        groupsByUserAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(GroupActivity.this, GroupChatActivity.class);
+                intent.putExtra("groupId",groupBean.getResult().get(position).getGroupId());
+                intent.putExtra("groupImg",result.get(position).getGroupImage());
+                intent.putExtra("groupName",result.get(position).getGroupName());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
