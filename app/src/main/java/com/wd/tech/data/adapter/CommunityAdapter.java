@@ -33,6 +33,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.MyVi
     private List<CommunityBean.ResultBean.CommunityCommentVoListBean> commentVoList;
     private CommentAdapter commentAdapter;
     private int mImageCount;
+
     public CommunityAdapter(Context context, List<CommunityBean.ResultBean> resultBeans) {
         this.context = context;
         this.resultBeans = resultBeans;

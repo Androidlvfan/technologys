@@ -33,8 +33,8 @@ public class WxPresenter implements WxContract.WxPresenter {
     }
 
     @Override
-    public void requestData(String ak,String code) {
-        model.containData(ak,code, new WxContract.WxModel.CallBack() {
+    public void requestData(int userId,String sessionId,String ak,String code) {
+        model.containData(userId,sessionId,ak,code, new WxContract.WxModel.CallBack() {
             @Override
             public void onCallBack(WxBean wxBean) {
                 wxView.showData(wxBean);

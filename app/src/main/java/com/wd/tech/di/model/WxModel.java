@@ -13,8 +13,8 @@ import io.reactivex.schedulers.Schedulers;
 public class WxModel implements WxContract.WxModel{
 
     @Override
-    public void containData(String ak,String code, final CallBack callBack) {
-        Observable<WxBean> observable = RetrofitUtils.getInstance().create(ApiService.class).getWx(ak,code);
+    public void containData(int userId,String sessionId, String ak, String code, final CallBack callBack) {
+        Observable<WxBean> observable = RetrofitUtils.getInstance().create(ApiService.class).getWx(userId,sessionId,ak,code);
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

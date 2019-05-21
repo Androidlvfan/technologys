@@ -3,6 +3,7 @@ package com.wd.tech.data.constant;
 import com.wd.tech.data.bean.AddFriendBean;
 import com.wd.tech.data.bean.AddGroupBean;
 import com.wd.tech.data.bean.CommunityBean;
+import com.wd.tech.data.bean.DealBean;
 import com.wd.tech.data.bean.DelInvitationBean;
 import com.wd.tech.data.bean.InvitationBean;
 import com.wd.tech.data.bean.LikeBean;
@@ -45,13 +46,13 @@ public interface ApiService {
     Observable<AddFriendBean> getAddFriendData(@Header("userId") int userId, @Header("sessionId") String sessionId, @Query("phone")String phone);
     @FormUrlEncoded
     @POST("techApi/user/v1/weChatLogin")
-    Observable<WxBean> getWx(@Header("ak") String ak, @Field("code") String code);
+    Observable<WxBean> getWx(@Header("userId") int userId, @Header("sessionId") String sessionId,@Header("ak") String ak, @Field("code") String code);
 
     //发布帖子
     @FormUrlEncoded
     @POST("techApi/community/verify/v1/releasePost")
-    Observable<InvitationBean> getReleasePost(@Header("userId") int userId, @Header("sessionId") String sessionId,
-                                 @Field("content") String content,@Body MultipartBody multipartBody);
+    Observable<DealBean> getReleasePost(@Header("userId") int userId, @Header("sessionId") String sessionId,
+                                        @Field("content") String content, @Body MultipartBody multipartBody);
 
     // 删除帖子 community/verify/v1/deletePost
     @DELETE("techApi/community/verify/v1/deletePost")

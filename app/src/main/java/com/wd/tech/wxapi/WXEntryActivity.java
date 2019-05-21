@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,11 +15,17 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.wd.tech.R;
+import com.wd.tech.data.app.App;
+import com.wd.tech.data.bean.GreenBean;
 import com.wd.tech.data.bean.WxBean;
 import com.wd.tech.data.utils.WeiXinUtil;
 import com.wd.tech.di.contract.WxContract;
 import com.wd.tech.di.presenter.WxPresenter;
+import com.wd.tech.gen.DaoSession;
+import com.wd.tech.gen.GreenBeanDao;
 import com.wd.tech.ui.activity.TechHomeActivity;
+
+import java.util.List;
 
 public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHandler ,WxContract.WxView {
 
@@ -43,7 +48,12 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
         }
         setContentView(R.layout.activity_wxentry);
         WeiXinUtil.reg(WXEntryActivity.this).handleIntent(getIntent(), this);
-
+        //取出userId和sessionId
+        DaoSession daoSession = App.getDaoSession();
+        GreenBeanDao greenBeanDao = daoSession.getGreenBeanDao();
+        List<GreenBean> greenBeans = greenBeanDao.loadAll();
+        userId = greenBeans.get(0).getUserId();
+        sessionId = greenBeans.get(0).getSessionId();
 
     }
 
@@ -59,7 +69,7 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
                 code = ((SendAuth.Resp) baseResp).code;
                 wxPresenter = new WxPresenter();
                 wxPresenter.attahView(this);
-                wxPresenter.requestData("0110010010000",code);
+                wxPresenter.requestData(userId,sessionId,"0110010010000",code);
                 break;
             default:
                 break;
@@ -68,7 +78,6 @@ public class WXEntryActivity extends AppCompatActivity implements IWXAPIEventHan
 
     @Override
     public void showData(WxBean wxBean) {
-        Log.e("sss",wxBean.getMessage());
         if (wxBean.getStatus().equals("0000")){
             //登录成功
             Toast.makeText(WXEntryActivity.this, ""+wxBean.getMessage(), Toast.LENGTH_SHORT).show();

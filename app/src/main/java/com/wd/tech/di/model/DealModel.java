@@ -15,7 +15,7 @@ public class DealModel implements DealContract.DealModel{
 
     @Override
     public void containData(int userId, String sessionId, String content, MultipartBody multipartBody, final CallBack callBack) {
-        Observable<DealBean> observable = RetrofitUtils.getInstance().create(ApiService.class).getDeal(userId,sessionId,content,multipartBody);
+        Observable<DealBean> observable = RetrofitUtils.getInstance().create(ApiService.class).getReleasePost(userId,sessionId,content,multipartBody);
         observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

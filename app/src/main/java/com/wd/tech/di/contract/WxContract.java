@@ -22,11 +22,11 @@ public interface WxContract {
 
         public  void deachView(WxContract.WxView wxView);
 
-        public  void requestData(String ak,String code);
+        public  void requestData(int userId,String sessionId,String ak,String code);
     }
 
     public interface WxModel{
-        public void containData(String ak,String code,CallBack callBack);
+        public void containData(int userId,String sessionId,String ak,String code,CallBack callBack);
 
         public interface CallBack{
             public void onCallBack(WxBean wxBean);
