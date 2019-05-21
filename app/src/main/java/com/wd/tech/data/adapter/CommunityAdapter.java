@@ -129,6 +129,16 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.MyVi
             }
         });
 
+        //评论监听
+        myView.community_list_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOnCommunityListClickListener !=null){
+                    mOnCommunityListClickListener.onmCommentClick(resultBeans.get(i).getId(),"@"+resultBeans.get(i).getNickName()+"回复：");
+                }
+            }
+        });
+
 
 
         //图片

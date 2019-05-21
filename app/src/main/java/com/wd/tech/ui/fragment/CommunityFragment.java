@@ -1,23 +1,31 @@
 package com.wd.tech.ui.fragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.wd.tech.R;
 import com.wd.tech.data.adapter.CommunityAdapter;
 import com.wd.tech.data.app.App;
+import com.wd.tech.data.bean.AddCommunityBean;
 import com.wd.tech.data.bean.CommunityBean;
 import com.wd.tech.data.bean.GreenBean;
 import com.wd.tech.data.bean.LikeBean;
 import com.wd.tech.data.bean.NoLikeBean;
+import com.wd.tech.di.contract.AddCommunityContract;
 import com.wd.tech.di.contract.CommunityContract;
 import com.wd.tech.di.contract.LikeContract;
 import com.wd.tech.di.contract.NoLikeContract;
+import com.wd.tech.di.presenter.AddCommunityPresenter;
 import com.wd.tech.di.presenter.CommunityPresenter;
 import com.wd.tech.di.presenter.LikePresenter;
 import com.wd.tech.di.presenter.NoLikePresenter;
@@ -38,7 +46,7 @@ import butterknife.Unbinder;
  * @fileName:InformatiionFragment
  * @packageName:com.wd.tech.dimensionalitytechnology.ui.fragment
  */
-public class CommunityFragment extends BaseFragment implements CommunityContract.CommunityView ,LikeContract.LikeView,NoLikeContract.NoLikeView {
+public class CommunityFragment extends BaseFragment implements CommunityContract.CommunityView ,AddCommunityContract.AddCommunityView,LikeContract.LikeView,NoLikeContract.NoLikeView {
 
 
     @BindView(R.id.rv)
@@ -52,6 +60,9 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
     private NoLikePresenter noLikePresenter;
     private int userId;
     private String sessionId;
+    private EditText mEtContent;
+    private TextView mSend;
+    private AddCommunityPresenter addCommunityPresenter;
 
     @Override
     protected void onLazyLoad() {
@@ -83,7 +94,8 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
         likePresenter.attahView(this);
         noLikePresenter = new NoLikePresenter();
         noLikePresenter.attahView(this);
-
+        addCommunityPresenter = new AddCommunityPresenter();
+        addCommunityPresenter.attahView(this);
         CommunityWrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,9 +122,32 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
             }
 
             @Override
-            public void onmCommentClick(int id, String name) {
-
-            }
+            public void onmCommentClick(final int id, String name) {
+                    View inflate = View.inflate(getActivity(), R.layout.pop_comment, null);
+                mEtContent = inflate.findViewById(R.id.et_content);
+                mEtContent.setHint(name);
+                    final Dialog builder = new Dialog(getActivity(), R.style.BottomDialog);
+                    builder.setContentView(inflate);
+                    builder.setCanceledOnTouchOutside(true);
+                    ViewGroup.LayoutParams layoutParamsthreefilmreview = inflate.getLayoutParams();
+                    layoutParamsthreefilmreview.width = getResources().getDisplayMetrics().widthPixels;
+                    inflate.setLayoutParams(layoutParamsthreefilmreview);
+                    builder.getWindow().setGravity(Gravity.BOTTOM);
+                    builder.show();
+                    mSend = inflate.findViewById(R.id.send);
+                    mSend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String s = mEtContent.getText().toString().trim();
+                            if (s.isEmpty()) {
+                                Toast.makeText(getContext(), "评论内容不能为空", Toast.LENGTH_SHORT).show();
+                            } else {
+                                addCommunityPresenter.requestData(userId,sessionId,id,s);
+                                builder.dismiss();
+                            }
+                        }
+                    });
+                }
 
             @Override
             public void onmPraiseClick(int id, int whetherGreat) {
@@ -137,6 +172,10 @@ public class CommunityFragment extends BaseFragment implements CommunityContract
         Toast.makeText(getActivity(), ""+noLikeBean.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void showAddCommunityData(AddCommunityBean communityBean) {
+        Toast.makeText(getActivity(), ""+communityBean.getMessage(), Toast.LENGTH_SHORT).show();
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();

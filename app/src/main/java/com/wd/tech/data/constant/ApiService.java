@@ -1,5 +1,6 @@
 package com.wd.tech.data.constant;
 
+import com.wd.tech.data.bean.AddCommunityBean;
 import com.wd.tech.data.bean.AddFriendBean;
 import com.wd.tech.data.bean.AddGroupBean;
 import com.wd.tech.data.bean.CommunityBean;
@@ -71,6 +72,14 @@ public interface ApiService {
     //社区用户评论列表（bean方式返参）
     @GET("techApi/community/v1/findCommunityUserCommentList")
     Observable<ViewMoreBean> getViewMore(@Query("communityId") int communityId,@Query("page") int page, @Query("count") int count);
+
+    //社区评论
+    @POST("techApi/community/verify/v1/addCommunityComment")
+    @FormUrlEncoded
+    Observable<AddCommunityBean> getAddCommunity(@Header("userId") int userId,
+                                                 @Header("sessionId") String sessionId,
+                                                 @Field("communityId") int communityId,
+                                                 @Field("content") String content);
 
     //发布帖子
     @POST("community/verify/v1/releasePost")

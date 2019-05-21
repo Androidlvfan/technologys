@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f4f3f3">
 
-      <!--  <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -16,7 +16,7 @@
 
             <com.scwang.smartrefresh.header.WaveSwipeHeader
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />-->
+                android:layout_height="wrap_content" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv"
@@ -25,7 +25,7 @@
                 android:layout_marginTop="32dp">
 
             </android.support.v7.widget.RecyclerView>
-     <!--   </com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
       <ImageView
           android:id="@+id/Community_write"
           android:layout_width="39dp"
