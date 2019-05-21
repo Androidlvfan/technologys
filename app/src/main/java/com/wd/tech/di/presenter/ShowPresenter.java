@@ -1,12 +1,8 @@
 package com.wd.tech.di.presenter;
 
-import com.wd.tech.data.bean.BannerBean;
 import com.wd.tech.data.bean.ShowBean;
-import com.wd.tech.di.contract.BannerContract;
 import com.wd.tech.di.contract.ShowContract;
-import com.wd.tech.di.model.BannerModel;
 import com.wd.tech.di.model.ShowModel;
-
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 

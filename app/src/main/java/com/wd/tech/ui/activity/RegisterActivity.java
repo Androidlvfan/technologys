@@ -21,6 +21,7 @@ import com.mob.MobSDK;
 import com.mob.commons.SMSSDK;
 
 
+
 import com.wd.tech.R;
 import com.wd.tech.data.bean.RegisterBean;
 import com.wd.tech.data.utils.RsaCoder;
@@ -211,9 +212,12 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
                     //提交验证码成功
                     if (event == cn.smssdk.SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
                         Toast.makeText(RegisterActivity.this, "提交验证码成功", Toast.LENGTH_SHORT).show();
+                        Intent intent =  new Intent(RegisterActivity.this,TechLoginActivity.class);
+                        startActivity(intent);
                     }  //获取验证码成功
                     else if (event == cn.smssdk.SMSSDK.EVENT_GET_VERIFICATION_CODE) {
                         Toast.makeText(RegisterActivity.this, "正在获取验证码", Toast.LENGTH_SHORT).show();
+
                     } else {
                         Toast.makeText(RegisterActivity.this, "获取验证码不正确", Toast.LENGTH_SHORT).show();
                         ((Throwable) data).printStackTrace();
@@ -274,5 +278,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
         cn.smssdk.SMSSDK.unregisterAllEventHandler();
     }
 }
+
 
 

@@ -99,11 +99,9 @@ public class RevAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      */
     class Banner extends RecyclerView.ViewHolder{
         private XBanner main_nav_banner;
-        private TextView banner_title;
         public Banner(@NonNull View itemView) {
             super(itemView);
             main_nav_banner = itemView.findViewById(R.id.main_nav_banner);
-            banner_title = itemView.findViewById(R.id.banner_title);
         }
     }
     /**

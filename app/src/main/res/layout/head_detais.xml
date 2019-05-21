@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="12dp"
+        android:text="11111111111"
+        />
+    <TextView
+        android:id="@+id/detail_relatedTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1111"
+        android:textSize="10sp"
+        android:textColor="#9999"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        />
+    <TextView
+        android:id="@+id/detail_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1111"
+        android:textColor="#9999"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        />
+    <ImageView
+        android:id="@+id/detail_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        />
+</LinearLayout>

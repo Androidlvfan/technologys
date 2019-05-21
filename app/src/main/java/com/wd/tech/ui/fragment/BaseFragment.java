@@ -1,6 +1,8 @@
 package com.wd.tech.ui.fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 /**
  * @author Wyg
@@ -20,10 +23,10 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment {
 
     //当前依附的Activity
-    private FragmentActivity fragmentActivity;
+    protected FragmentActivity fragmentActivity;
 
     //根布局
-    private View view;
+    protected View mRootView;
 
     //是否对用户可见
     protected boolean isVisible;
@@ -44,9 +47,13 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(setLayoutResouceId(), container, false);
+        mRootView = inflater.inflate(setLayoutResouceId(), container, false);
         initData();
-        return view;
+
+        mIsPrepare = true;
+
+        onLazyLoad();
+        return mRootView;
     }
 
     @Override
@@ -68,9 +75,12 @@ public abstract class BaseFragment extends Fragment {
         }
     }
     //懒加载，仅当用户可见切view初始化结束后才会执行
-    protected abstract void onLazyLoad();
+    protected  void onLazyLoad(){
+
+    };
     //布局
     protected abstract int setLayoutResouceId();
     //初始化数据
-    protected abstract void initData();
+    protected void initData(){};
+
 }

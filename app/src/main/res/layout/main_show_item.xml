@@ -28,7 +28,7 @@
         <TextView
             android:id="@+id/show_item_title2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="111111"
             android:layout_marginTop="10dp"
             android:textSize="12sp"
@@ -45,6 +45,14 @@
                 android:text="111"
                 android:textSize="10sp"
                 android:textColor="#999"
+                />
+            <ImageView
+                android:id="@+id/money"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/money"
+                android:layout_marginLeft="20dp"
+                android:visibility="gone"
                 />
             <CheckBox
                 android:id="@+id/sellect_cb"

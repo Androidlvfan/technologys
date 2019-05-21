@@ -1,5 +1,6 @@
 package com.wd.tech.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,14 +18,21 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.wd.tech.R;
 import com.wd.tech.data.adapter.RevAdapter;
+import com.wd.tech.data.app.App;
 import com.wd.tech.data.bean.BannerBean;
+import com.wd.tech.data.bean.GreenBean;
 import com.wd.tech.data.bean.ShowBean;
 import com.wd.tech.di.contract.BannerContract;
 import com.wd.tech.di.contract.ShowContract;
 import com.wd.tech.di.presenter.BannerPresenter;
 import com.wd.tech.di.presenter.ShowPresenter;
+import com.wd.tech.gen.DaoSession;
+import com.wd.tech.gen.GreenBeanDao;
+import com.wd.tech.ui.activity.MenuActivity;
+import com.wd.tech.ui.activity.SearchActivity;
 
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,19 +61,20 @@ public class InformatiionFragment extends BaseFragment implements BannerContract
     private BannerPresenter bannerPresenter;
     private RevAdapter revAdapter;
     private ShowPresenter showPresenter;
-    @Override
-    protected void onLazyLoad() {
-
-    }
-
-    @Override
-    protected int setLayoutResouceId() {
-        return R.layout.frag_informatiion_layout;
-    }
+    private String sessionId;
+    private int userId;
+    private int plated = 1;
+    private int page = 1;
 
     @Override
     protected void initData() {
-
+        super.initData();
+        //取出userId和sessionId
+        DaoSession daoSession = App.getDaoSession();
+        GreenBeanDao greenBeanDao = daoSession.getGreenBeanDao();
+        List<GreenBean> greenBeans = greenBeanDao.loadAll();
+        userId = greenBeans.get(0).getUserId();
+        sessionId = greenBeans.get(0).getSessionId();
     }
 
     @Override
@@ -74,22 +83,6 @@ public class InformatiionFragment extends BaseFragment implements BannerContract
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
 
-
-
-        //https://www.jianshu.com/p/05ce4ab4b948----刷新的简书
-        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.finishRefresh();
-            }
-        });
-        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                refreshLayout.finishLoadMore();
-            }
-        });
-
         refreshLayout.setEnableRefresh(true);
         refreshLayout.setEnableLoadMore(true);
 
@@ -97,17 +90,43 @@ public class InformatiionFragment extends BaseFragment implements BannerContract
         bannerPresenter = new BannerPresenter();
         bannerPresenter.attrView(this);
         bannerPresenter.requestData();
-
+//show的p层
         showPresenter = new ShowPresenter();
         showPresenter.attrView(this);
-        String sessionId="1557738582381468";
         HashMap<String,String> params = new HashMap<>();
-        params.put("plated","1");
-        params.put("page","1");
+        params.put("plated",plated+"");
+        params.put("page",page+"");
         params.put("count","10");
-        showPresenter.requestData(params,468+"",sessionId+"");
+        showPresenter.requestData(params,userId+"",sessionId+"");
+
+        //https://www.jianshu.com/p/05ce4ab4b948----刷新的简书
+        //刷新
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                refreshLayout.finishRefresh();
+                revAdapter.notifyDataSetChanged();
+                Log.i("TAST","refresh");
+            }
+        });
+        //加载更多
+        refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                Log.i("TAST","load");
+                plated++;
+                page++;
+                refreshLayout.finishLoadMore();
+                revAdapter.notifyDataSetChanged();//刷新适配器
+            }
+        });
 
         return rootView;
+    }
+
+    @Override
+    protected int setLayoutResouceId() {
+        return R.layout.frag_informatiion_layout;
     }
 
     @Override
@@ -120,8 +139,12 @@ public class InformatiionFragment extends BaseFragment implements BannerContract
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.home_menu:
+                Intent intent = new Intent(getActivity(), MenuActivity.class);
+                startActivity(intent);
                 break;
             case R.id.home_search:
+                Intent intent1 = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
@@ -149,6 +172,9 @@ public class InformatiionFragment extends BaseFragment implements BannerContract
      */
     @Override
     public void ShowData(ShowBean showBean) {
-
+        revAdapter.setShowAdapter(showBean.getResult());
+        revAdapter.notifyDataSetChanged();
+        homeRcv.setAdapter(revAdapter);
+        homeRcv.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 }
