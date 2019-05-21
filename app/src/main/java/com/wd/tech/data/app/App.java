@@ -6,11 +6,19 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 
 import com.facebook.cache.disk.DiskCacheConfig;
+import com.facebook.common.logging.FLog;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.imagepipeline.listener.RequestListener;
+import com.facebook.imagepipeline.listener.RequestLoggingListener;
 import com.mob.MobSDK;
 import com.wd.tech.gen.DaoMaster;
 import com.wd.tech.gen.DaoSession;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import okhttp3.OkHttpClient;
 
 /**
  * @author Wyg
@@ -29,7 +37,10 @@ public class App extends Application {
         super.onCreate();
         app = this;
         MobSDK.init(this);
-        //缓存路径及大小
+
+
+        Set<RequestListener> requestListeners = new HashSet<>();
+        requestListeners.add(new RequestLoggingListener());
         DiskCacheConfig diskCacheConfig = DiskCacheConfig.newBuilder(this)
                 .setBaseDirectoryPath(getCacheDir())
                 .setMaxCacheSize(20 * 1024 * 1024)
@@ -39,9 +50,10 @@ public class App extends Application {
                 //开启向下采样 加载图片更强大
                 .setDownsampleEnabled(true)
                 //如果不是超高清图片  不要8888
-                .setBitmapsConfig(Bitmap.Config.RGB_565)
+                .setBitmapsConfig(Bitmap.Config.ARGB_4444)
+                .setRequestListeners(requestListeners)
                 .build();
-
+        FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         Fresco.initialize(this,imagePipelineConfig);
 
         //GreenDao数据库

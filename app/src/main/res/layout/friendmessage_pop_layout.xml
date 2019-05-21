@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/pop_shape"
+    android:orientation="vertical">
+
+
+
+    <TextView
+        android:padding="20dp"
+        android:id="@+id/popMove_moveGroup"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:text="移动分组"/>
+
+    <TextView
+        android:id="@+id/pop_upd_beizhu"
+        android:padding="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:text="修改备注"/>
+    <TextView
+        android:id="@+id/liaotianjilu"
+        android:padding="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:text="聊天记录"/>
+
+
+
+</LinearLayout>

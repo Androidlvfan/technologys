@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:paddingBottom="10dip"
+    android:paddingTop="10dip">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:roundAsCircle="true"
+        android:id="@+id/leftDialogItem_headImg"
+        android:layout_gravity="center_vertical"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/leftDialogItem_text"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/left_chat_shape"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="晚上好"/>
+
+</LinearLayout>

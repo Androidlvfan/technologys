@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.wd.tech.R;
@@ -182,54 +183,80 @@ public class AddFriendActivity extends BaseActivity implements AddFriendContract
     @Override
     public void showAddFriendData(final AddFriendBean addFriendBean) {
 
-        addFriendActivityRecyclerView.setVisibility(View.VISIBLE);
-        AddFriendBean.ResultBean result = addFriendBean.getResult();
         Log.i("zcq_QueryFriendByPhone", "根据手机号查询用户: " + addFriendBean.getMessage());
-        final List<AddFriendBean> list = new ArrayList<>();
-        //添加数据到集合中
-        list.clear();
-        list.add(addFriendBean);
-        //设置适配器
-        AddFriendAdapter addFriendAdapter = new AddFriendAdapter(R.layout.addfriend_item_layout,list);
-        addFriendActivityRecyclerView.setAdapter(addFriendAdapter);
-        //布局管理器
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        addFriendActivityRecyclerView.setLayoutManager(linearLayoutManager);
-        //点击好友条目
-        addFriendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(AddFriendActivity.this, FriendMessageActivity.class);
-                intent.putExtra("email",list.get(position).getResult().getEmail());
-                intent.putExtra("headPic",list.get(position).getResult().getHeadPic());
-                intent.putExtra("integral",list.get(position).getResult().getIntegral());
-                intent.putExtra("nickName",list.get(position).getResult().getNickName());
-                intent.putExtra("phone",list.get(position).getResult().getPhone());
-                intent.putExtra("sex",list.get(position).getResult().getSex());
-                intent.putExtra("signature",list.get(position).getResult().getSignature());
-                intent.putExtra("userId",list.get(position).getResult().getUserId());
-                intent.putExtra("whetherVip",list.get(position).getResult().getWhetherVip());
-                intent.putExtra("whetherFaceId",list.get(position).getResult().getWhetherFaceId());
-                startActivity(intent);
-            }
-        });
+        if (addFriendBean.getResult() == null){
+            Toast.makeText(this, "此用户不存在", Toast.LENGTH_SHORT).show();
+            addFriendActivityRecyclerView.setVisibility(View.GONE);
+        }else{
+            addFriendActivityRecyclerView.setVisibility(View.VISIBLE);
+            final List<AddFriendBean> list = new ArrayList<>();
+            //添加数据到集合中
+            list.clear();
+            list.add(addFriendBean);
+            //设置适配器
+            AddFriendAdapter addFriendAdapter = new AddFriendAdapter(R.layout.addfriend_item_layout,list);
+            addFriendActivityRecyclerView.setAdapter(addFriendAdapter);
+            //布局管理器
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            addFriendActivityRecyclerView.setLayoutManager(linearLayoutManager);
+            //点击好友条目
+            addFriendAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    Intent intent = new Intent(AddFriendActivity.this, FriendMessageActivity.class);
+                    intent.putExtra("email",list.get(position).getResult().getEmail());
+                    intent.putExtra("headPic",list.get(position).getResult().getHeadPic());
+                    intent.putExtra("integral",list.get(position).getResult().getIntegral());
+                    intent.putExtra("nickName",list.get(position).getResult().getNickName());
+                    intent.putExtra("phone",list.get(position).getResult().getPhone());
+                    intent.putExtra("sex",list.get(position).getResult().getSex());
+                    intent.putExtra("signature",list.get(position).getResult().getSignature());
+                    intent.putExtra("userId",list.get(position).getResult().getUserId());
+                    intent.putExtra("whetherVip",list.get(position).getResult().getWhetherVip());
+                    intent.putExtra("whetherFaceId",list.get(position).getResult().getWhetherFaceId());
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
     //根据群号查询的群组
     @Override
-    public void showAddGroupData(AddGroupBean addGroupBean) {
-        //显示群聊recyclerview
-        addgroupRecyclerView.setVisibility(View.VISIBLE);
+    public void showAddGroupData(final AddGroupBean addGroupBean) {
         Log.i("zcq_QueryGroupByPhone", "根据手机号查询群聊: " + addGroupBean.getMessage());
-        List<AddGroupBean> list = new ArrayList<>();
-        //添加数据到集合中
-        list.clear();
-        list.add(addGroupBean);
-        //设置适配器
-        AddGroupAdapter addGroupAdapter = new AddGroupAdapter(R.layout.addgroup_item_layout,list);
-        addgroupRecyclerView.setAdapter(addGroupAdapter);
-        //布局管理器
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        addgroupRecyclerView.setLayoutManager(linearLayoutManager);
+        if (addGroupBean.getResult() == null){
+            addgroupRecyclerView.setVisibility(View.GONE);
+        }else{
+            //显示群聊recyclerview
+            addgroupRecyclerView.setVisibility(View.VISIBLE);
+            List<AddGroupBean> list = new ArrayList<>();
+            //添加数据到集合中
+            list.clear();
+            list.add(addGroupBean);
+            //设置适配器
+            AddGroupAdapter addGroupAdapter = new AddGroupAdapter(R.layout.addgroup_item_layout,list);
+            addgroupRecyclerView.setAdapter(addGroupAdapter);
+            //布局管理器
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            addgroupRecyclerView.setLayoutManager(linearLayoutManager);
+            //条目点击事件
+            addGroupAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    Intent intent = new Intent(AddFriendActivity.this,GroupMessageActivity.class);
+                    intent.putExtra("currentCount",addGroupBean.getResult().getCurrentCount());
+                    intent.putExtra("description",addGroupBean.getResult().getDescription());
+                    intent.putExtra("groupId",addGroupBean.getResult().getGroupId());
+                    intent.putExtra("groupImage",addGroupBean.getResult().getGroupImage());
+                    intent.putExtra("groupName",addGroupBean.getResult().getGroupName());
+                    intent.putExtra("hxGroupId",addGroupBean.getResult().getHxGroupId());
+                    intent.putExtra("maxCount",addGroupBean.getResult().getMaxCount());
+                    intent.putExtra("ownerUid",addGroupBean.getResult().getOwnerUid());
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
 
     @Override

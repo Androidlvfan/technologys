@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="#fff">
+
+
+    <LinearLayout
+        android:id="@+id/OneListRecyclerItem_clickLinear"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/OneListRecyclerItem_showIcon"
+            android:layout_marginLeft="6dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/right_sanjiao"/>
+
+        <TextView
+            android:id="@+id/OneListRecyclerItem_groupText"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="13dp"
+            android:layout_width="wrap_content"
+            android:text="我的好友"
+            android:textSize="14sp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginRight="6dp"
+            android:id="@+id/OneListRecyclerItem_friendNum"
+            android:layout_gravity="center_vertical"
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textColor="#aaa"
+            android:text="1/2"
+            android:textSize="12sp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
+        android:layout_below="@+id/OneListRecyclerItem_clickLinear"
+        android:id="@+id/OneListRecyclerItem_childRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </android.support.v7.widget.RecyclerView>
+
+
+
+
+
+</RelativeLayout>

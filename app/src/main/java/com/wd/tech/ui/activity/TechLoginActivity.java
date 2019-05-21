@@ -136,7 +136,7 @@ public class TechLoginActivity extends BaseActivity implements LoginContract.Log
     public void showData(LoginBean loginBean) {
         int userId = loginBean.getResult().getUserId();
         String sessionId = loginBean.getResult().getSessionId();
-
+        Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
         if(loginBean.getStatus().equals("0000")){
            /* SpUtils.getInstance().saveData("userId", loginBean.getResult().getUserId() + "");
             SpUtils.getInstance().saveData("sessionId", loginBean.getResult().getSessionId() + "");
@@ -155,7 +155,7 @@ public class TechLoginActivity extends BaseActivity implements LoginContract.Log
             greenBean.setSessionId(sessionId);
             greenBeanDao.insertOrReplace(greenBean);
         }else {
-            Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
+
         }
 
     }

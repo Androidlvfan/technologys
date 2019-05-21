@@ -20,6 +20,22 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.config
+
+        multiDexEnabled true
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "80cb409d37df18274d16876d", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+
+
     }
     buildTypes {
         release {
@@ -60,7 +76,7 @@ dependencies {
     //BaseQuickAdapter
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     //Fresco
-    implementation 'com.facebook.fresco:fresco:+'
+    implementation 'com.facebook.fresco:fresco:1.9.0'
     //smart第三方上拉下拉
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-21'
@@ -82,6 +98,14 @@ dependencies {
     implementation files('libs/MobCommons-2019.0423.2029.jar')
     //日志拦截器
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    //极光 即时通讯
+    implementation 'cn.jiguang.imui:chatinput:0.10.0'
+    implementation 'cn.jiguang.sdk:jmessage:2.8.2'
+    // 此处以JMessage 2.8.2 版本为例。
+    implementation 'cn.jiguang.sdk:jcore:1.2.7'
+    // 此处以JCore 1.2.7 版本为例。
 
+    //项目过大  或者  与libs包有冲突时用
 
+    implementation 'com.android.support:multidex:1.0.3'
 }
