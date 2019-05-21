@@ -45,6 +45,10 @@ public class RetrofitUtils {
         return builder.build();
     }
 
+    private RetrofitUtils(){
+
+    }
+
 
 
     private RetrofitUtils(String baseurl){

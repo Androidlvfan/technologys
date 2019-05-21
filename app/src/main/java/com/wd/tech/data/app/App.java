@@ -12,6 +12,9 @@ import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.listener.RequestListener;
 import com.facebook.imagepipeline.listener.RequestLoggingListener;
 import com.mob.MobSDK;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.wd.tech.gen.DaoMaster;
 import com.wd.tech.gen.DaoSession;
 
@@ -55,6 +58,12 @@ public class App extends Application {
                 .build();
         FLog.setMinimumLoggingLevel(FLog.VERBOSE);
         Fresco.initialize(this,imagePipelineConfig);
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).imageDownloader(
+                new BaseImageDownloader(this, 60 * 1000, 60 * 1000)) // connectTimeout超时时间
+                .build();
+        ImageLoader.getInstance().init(config);
+
 
         //GreenDao数据库
         //参数1:上下文

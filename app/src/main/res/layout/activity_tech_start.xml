@@ -15,7 +15,7 @@
         android:layout_height="110dp"
         android:layout_marginTop="154dp"
         android:layout_gravity="center"
-        android:src="@mipmap/logo_xhdpi"
+        app:srcCompat="@mipmap/logo_xhdpi"
         />
 
     <TextView

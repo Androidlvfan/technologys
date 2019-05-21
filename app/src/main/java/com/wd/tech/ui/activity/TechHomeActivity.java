@@ -1,8 +1,10 @@
 package com.wd.tech.ui.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -32,7 +34,10 @@ public class TechHomeActivity extends BaseActivity {
     @BindView(R.id.activityHome_radioGroup)
     RadioGroup activityHomeRadioGroup;
     private List<Fragment> list;
-
+    public ViewGroup ninePlaceGridView;//外部设置
+    public Object imageId;//外部设置
+    public List<Object> imageIds;//外部设置
+    public int currentIndex;//外部设置
 
     @Override
     protected int initLayout() {
@@ -42,6 +47,7 @@ public class TechHomeActivity extends BaseActivity {
     @Override
     protected void initData() {
         ButterKnife.bind(this);
+
 
         //创建集合 添加fragment
         list = new ArrayList<>();
@@ -70,6 +76,8 @@ public class TechHomeActivity extends BaseActivity {
     }
 
 
+
+
     @OnClick({R.id.activityHome_zxBtn, R.id.activityHome_messageBtn, R.id.activityHome_groupBtn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -86,5 +94,12 @@ public class TechHomeActivity extends BaseActivity {
                 viewPager.setCurrentItem(2);
                 break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }

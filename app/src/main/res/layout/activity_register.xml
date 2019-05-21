@@ -12,7 +12,7 @@
         android:id="@+id/reg_imglogo"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@mipmap/reglogo"
+        app:srcCompat="@mipmap/reglogo"
         android:layout_marginTop="108dp"
         android:layout_centerHorizontal="true"/>
     <RelativeLayout
@@ -28,7 +28,7 @@
             android:id="@+id/reg_imgname"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/register_icon_name_n"/>
+            app:srcCompat="@mipmap/register_icon_name_n"/>
         <EditText
             android:id="@+id/edit_reg_nickname"
             android:layout_width="match_parent"
@@ -63,7 +63,7 @@
             android:id="@+id/reg_imgphone"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/register_icon_phone_n"/>
+            app:srcCompat="@mipmap/register_icon_phone_n"/>
         <EditText
             android:id="@+id/edit_reg_phone"
             android:layout_width="match_parent"
@@ -98,7 +98,7 @@
             android:id="@+id/reg_imglock"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/register_icon_lock_n"/>
+            app:srcCompat="@mipmap/register_icon_lock_n"/>
         <EditText
             android:id="@+id/edit_reg_lock"
             android:layout_width="match_parent"
@@ -133,7 +133,7 @@
             android:id="@+id/reg_imgyz"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@mipmap/register_icon_lock_n"/>
+            app:srcCompat="@mipmap/register_icon_lock_n"/>
         <EditText
             android:id="@+id/edit_reg_yz"
             android:layout_width="match_parent"

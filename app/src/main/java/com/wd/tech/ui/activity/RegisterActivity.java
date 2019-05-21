@@ -1,6 +1,7 @@
 package com.wd.tech.ui.activity;
 
 
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -259,6 +260,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
         else
             return mobileNums.matches(telRegex);
     }
+
 
 
 
