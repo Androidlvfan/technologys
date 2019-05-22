@@ -131,10 +131,6 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
 
-    //SmartRefreshLayout
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
-    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
-
     //XBanner轮播图
     implementation 'com.xhb:xbanner:1.5.1'
     //cardview
@@ -153,48 +149,14 @@ dependencies {
             if (requested.group == 'com.android.support') {
                 if (!requested.name.startsWith("multidex")) {
                     details.useVersion '28.0.0'    //此处填写你项
-
-
                 }
-
-
             }
         }
     }
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
-    //遇到v7包兼容问题？
-    configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'com.android.support') {
-                if (!requested.name.startsWith("multidex")) {
-                    details.useVersion '28.0.0'    //此处填写你项
-
-
-                }
-
-
     //imgageLoader
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-            }
-        }
-    }
     implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
-    //遇到v7包兼容问题？
-    configurations.all {
-        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
-            def requested = details.requested
-            if (requested.group == 'com.android.support') {
-                if (!requested.name.startsWith("multidex")) {
-                    details.useVersion '28.0.0'    //此处填写你项
-
-
-                }
-
-
-            }
-        }
-    }
     implementation 'com.android.support:multidex:1.0.3'
 }
