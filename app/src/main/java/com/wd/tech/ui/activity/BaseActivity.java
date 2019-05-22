@@ -1,20 +1,13 @@
 package com.wd.tech.ui.activity;
 
 import android.Manifest;
-import android.app.Activity;
-import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import com.gyf.barlibrary.ImmersionBar;
-import com.wd.tech.R;
 
 import butterknife.ButterKnife;
 
@@ -42,9 +35,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .init();
         //绑定布局
         ButterKnife.bind(this);
-
-
-
         initData();
         initListener();
         stateNetWork();

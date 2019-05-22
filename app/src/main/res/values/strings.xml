@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">维度科技</string>
+
+    <string name="abc_action_bar_home_description">梁虎平</string>
+
+    <string name="abc_action_bar_home_description_format">最帅</string>
+
+
 </resources>

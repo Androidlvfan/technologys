@@ -8,7 +8,7 @@
     <color name="colorText">#D81B60</color>
     <color name="chatcolor">#20afda</color>
     <color name="colorTextColor">#333333</color>
-
+    <color name="black">#333333</color>
     <color name="common">#666666</color>
 
     <color name="choosecolor">#80ffffff</color>
