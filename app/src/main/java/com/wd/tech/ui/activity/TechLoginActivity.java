@@ -29,6 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
 public class TechLoginActivity extends BaseActivity implements LoginContract.LoginView,View.OnClickListener {
 
 
@@ -110,6 +111,8 @@ public class TechLoginActivity extends BaseActivity implements LoginContract.Log
 
                 break;
             case R.id.text_reg:
+                Intent intent = new Intent(this,RegisterActivity.class);
+                startActivity(intent);
                 startActivity(new Intent(TechLoginActivity.this,RegisterActivity.class));
                 break;
           /*  case R.id.wxLogin:
@@ -143,6 +146,9 @@ public class TechLoginActivity extends BaseActivity implements LoginContract.Log
             */
             Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(TechLoginActivity.this,TechHomeActivity.class));
+            Log.i("userId",loginBean.getResult().getUserId()+"");
+            Log.i("sessionId",loginBean.getResult().getSessionId()+"");
+
             //同步之前先查询数据库
             DaoSession daoSession = App.getDaoSession();
             GreenBeanDao greenBeanDao = daoSession.getGreenBeanDao();

@@ -20,6 +20,8 @@ import com.mob.MobSDK;
 
 import com.mob.commons.SMSSDK;
 
+
+
 import com.wd.tech.R;
 import com.wd.tech.data.bean.RegisterBean;
 import com.wd.tech.data.utils.RsaCoder;
@@ -262,6 +264,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
 
 
 
+
     @Override
     public void showData(RegisterBean registerBean) {
         //吐司信息
@@ -275,4 +278,6 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.R
         cn.smssdk.SMSSDK.unregisterAllEventHandler();
     }
 }
+
+
 
