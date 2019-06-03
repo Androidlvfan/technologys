@@ -1,5 +1,6 @@
 package com.wd.tech.data.constant;
 
+import com.wd.tech.data.bean.AddCollectBean;
 import com.wd.tech.data.bean.BannerBean;
 import com.wd.tech.data.bean.AddCommunityBean;
 import com.wd.tech.data.bean.AddFriendBean;
@@ -281,4 +282,9 @@ public interface ApiService {
     //根据标题模糊查询
     @GET("techApi/information/v1/findInformationByTitle")
     Observable<SerachByTitleBean> getSearchByTitle(@Query("title") String title,@QueryMap HashMap<String,String> params);
+
+    //添加收藏
+    @POST("techApi/user/verify/v1/addCollection")
+    Observable<AddCollectBean> getAddCollection(@Query("infoId") String infoId, @Header("userId") int userId, @Header("sessionId") String sessionId);
+
 }

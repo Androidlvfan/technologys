@@ -76,6 +76,7 @@ public class DetailsActivity extends BaseActivity implements DetailContract.Deta
         commentPresenter = new CommentPresenter();
         commentPresenter.attrView(this);
 
+        detailOkAdapter = new DetailOkAdapter(this);
 
         //取出userId和sessionId
         DaoSession daoSession = App.getDaoSession();
@@ -84,8 +85,9 @@ public class DetailsActivity extends BaseActivity implements DetailContract.Deta
         userId = greenBeans.get(0).getUserId();
         sessionId = greenBeans.get(0).getSessionId();
 
+
         Intent intent = getIntent();
-        int ids = intent.getExtras().getInt("id");
+        int ids = intent.getExtras().getInt("id");//条目详情id
         whetherPay = intent.getExtras().getInt("whetherPay");//是否付费
         Log.i("DetailId", "" + ids+""+whetherPay);
 
@@ -121,9 +123,13 @@ public class DetailsActivity extends BaseActivity implements DetailContract.Deta
     @Override
     public void ShowData(DetailOkBean detailOkBean) {
 
+        Log.i("sessionid", "" + sessionId+"%"+userId);
+
         detailTitle.setText(detailOkBean.getResult().getTitle());
         detailRelatedTime.setText(detailOkBean.getResult().getReleaseTime() + "");
         detailSource.setText(detailOkBean.getResult().getSource());
+
+        detailOkAdapter.setResultBean(detailOkBean);
 
         Glide.with(this).load(detailOkBean.getResult().getThumbnail()).into(detailThumbnail);
 
@@ -157,8 +163,10 @@ public class DetailsActivity extends BaseActivity implements DetailContract.Deta
         Log.i("Okk", detailCommentBean.getResult().get(0).getNickName() + "");
 
         if(whetherPay == 2){//2为免费
-            detailOkAdapter = new DetailOkAdapter(this,result);
+            //detailOkAdapter = new DetailOkAdapter(this);
+            detailOkAdapter.setComentBean(detailCommentBean.getResult());
             detailRcv.setAdapter(detailOkAdapter);//免费
+
         }else{
             detailFailAdapter = new DetailFailAdapter(this, result);
             detailRcv.setAdapter(detailFailAdapter);//付费

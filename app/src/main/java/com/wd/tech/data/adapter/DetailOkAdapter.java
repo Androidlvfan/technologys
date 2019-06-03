@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.wd.tech.R;
@@ -21,14 +23,17 @@ public class DetailOkAdapter extends RecyclerView.Adapter<DetailOkAdapter.OK> {
     private List<DetailCommentBean.ResultBean> resultBean;
     private DetailOkBean detailOkBean;
 
-    public DetailOkAdapter(Context context,List<DetailCommentBean.ResultBean> resultBean) {
+    public DetailOkAdapter(Context context) {
         this.context = context;
-        this.resultBean = resultBean;
+
     }
-/*
-    public void setResultBean(List<DetailCommentBean.ResultBean> resultBean) {
-        this.resultBean = resultBean;
-    }*/
+    public void setComentBean(List<DetailCommentBean.ResultBean> resultBean){
+        this.resultBean = resultBean;//评论的构造器
+    }
+
+    public void setResultBean(DetailOkBean detailOkBean) {
+        this.detailOkBean = detailOkBean;//请求成功的详情页的构造器
+    }
 
     @NonNull
     @Override
@@ -42,6 +47,21 @@ public class DetailOkAdapter extends RecyclerView.Adapter<DetailOkAdapter.OK> {
         DetailCommentAdapter detailCommentAdapter = new DetailCommentAdapter(context,resultBean);
         ok.detail_ok_comment_rcv.setAdapter(detailCommentAdapter);
         ok.detail_ok_comment_rcv.setLayoutManager(new LinearLayoutManager(context));
+
+        WebSettings settings = ok.webView.getSettings();
+        settings.setSupportZoom(true);//支持缩放
+        settings.setUseWideViewPort(true);//支持扩大比例的缩放
+        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);//自适应屏幕
+        settings.setLoadWithOverviewMode(true);
+
+        //设置webView
+        ok.webView.setWebChromeClient(new WebChromeClient());
+        settings.setJavaScriptEnabled(true);
+
+        settings.setTextSize(WebSettings.TextSize.NORMAL);
+
+        ok.webView.loadDataWithBaseURL(null,detailOkBean.getResult().getContent(),"text/html","utf-8",null);
+
     }
 
     @Override
